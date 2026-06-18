@@ -17,6 +17,7 @@
     instantAnswers: {},
     batchAnswers: {},
     batchSubmitted: false,
+    roundCompleted: false,
     activeView: "practice",
   };
 
@@ -45,11 +46,13 @@
     clearRecordsBtn: document.getElementById("clearRecordsBtn"),
     questionPosition: document.getElementById("questionPosition"),
     questionType: document.getElementById("questionType"),
+    questionActions: document.getElementById("questionActions"),
     practiceProgress: document.getElementById("practiceProgress"),
     practiceProgressBar: document.getElementById("practiceProgressBar"),
     practiceProgressText: document.getElementById("practiceProgressText"),
     starBtn: document.getElementById("starBtn"),
     masteredBtn: document.getElementById("masteredBtn"),
+    questionCard: document.getElementById("questionCard"),
     questionTitle: document.getElementById("questionTitle"),
     optionsBox: document.getElementById("optionsBox"),
     resultBox: document.getElementById("resultBox"),
@@ -58,7 +61,19 @@
     submitAnswerBtn: document.getElementById("submitAnswerBtn"),
     prevBtn: document.getElementById("prevBtn"),
     nextBtn: document.getElementById("nextBtn"),
+    finishRoundBtn: document.getElementById("finishRoundBtn"),
     submitRoundBtn: document.getElementById("submitRoundBtn"),
+    viewRoundResultBtn: document.getElementById("viewRoundResultBtn"),
+    roundCompletePanel: document.getElementById("roundCompletePanel"),
+    roundResultMessage: document.getElementById("roundResultMessage"),
+    roundResultTotal: document.getElementById("roundResultTotal"),
+    roundResultCorrect: document.getElementById("roundResultCorrect"),
+    roundResultWrong: document.getElementById("roundResultWrong"),
+    roundResultAccuracy: document.getElementById("roundResultAccuracy"),
+    roundWrongReview: document.getElementById("roundWrongReview"),
+    retryWrongBtn: document.getElementById("retryWrongBtn"),
+    restartRoundBtn: document.getElementById("restartRoundBtn"),
+    completeSettingsBtn: document.getElementById("completeSettingsBtn"),
     currentAttempts: document.getElementById("currentAttempts"),
     currentCorrect: document.getElementById("currentCorrect"),
     currentWrong: document.getElementById("currentWrong"),
@@ -164,6 +179,7 @@
           instantAnswers: state.instantAnswers,
           batchAnswers: state.batchAnswers,
           batchSubmitted: state.batchSubmitted,
+          roundCompleted: state.roundCompleted,
         })
       );
     } catch (error) {
@@ -205,6 +221,10 @@
         state.judgeMode === "batch" &&
         Boolean(saved.batchSubmitted) &&
         roundQuestions.every((question) => state.batchAnswers[question.id]);
+      state.roundCompleted =
+        state.judgeMode === "batch"
+          ? state.batchSubmitted
+          : Boolean(saved.roundCompleted) && roundQuestions.every((question) => state.instantAnswers[question.id]);
       return true;
     } catch (error) {
       console.error("当前练习恢复失败，已清除损坏的会话：", error);
@@ -318,6 +338,30 @@
     return copy;
   }
 
+  function beginRound(roundQuestions, judgeMode, emptyMessage = "当前筛选条件下没有可练习的题目。") {
+    state.roundQuestions = roundQuestions.slice();
+    state.currentIndex = 0;
+    state.judgeMode = judgeMode === "batch" ? "batch" : "instant";
+    state.currentSubmitted = false;
+    state.currentSelection = [];
+    state.draftAnswers = {};
+    state.instantAnswers = {};
+    state.batchAnswers = {};
+    state.batchSubmitted = false;
+    state.roundCompleted = false;
+
+    if (!state.roundQuestions.length) {
+      renderEmptyRound(emptyMessage);
+      setView("practice");
+      return false;
+    }
+
+    renderQuestion();
+    savePracticeSession();
+    setView("practice");
+    return true;
+  }
+
   function startRound() {
     let pool = getFilteredQuestions();
     if (el.orderSelect.value === "random") {
@@ -327,26 +371,8 @@
     }
 
     const size = el.roundSizeSelect.value;
-    state.roundQuestions = size === "all" ? pool : pool.slice(0, Number(size));
-    state.currentIndex = 0;
-    state.judgeMode = el.judgeModeSelect.value;
-    state.currentSubmitted = false;
-    state.currentSelection = [];
-    state.draftAnswers = {};
-    state.instantAnswers = {};
-    state.batchAnswers = {};
-    state.batchSubmitted = false;
-
-    if (!state.roundQuestions.length) {
-      renderEmptyRound("当前筛选条件下没有可练习的题目。");
-      setView("practice");
-      return;
-    }
-
-    renderQuestion();
-    renderRoundStats();
-    savePracticeSession();
-    setView("practice");
+    const roundQuestions = size === "all" ? pool : pool.slice(0, Number(size));
+    beginRound(roundQuestions, el.judgeModeSelect.value);
   }
 
   function resetRound() {
@@ -358,6 +384,7 @@
     state.instantAnswers = {};
     state.batchAnswers = {};
     state.batchSubmitted = false;
+    state.roundCompleted = false;
     clearPracticeSession();
     renderEmptyRound("当前练习已重置。");
     setView("practice");
@@ -373,6 +400,10 @@
       renderEmptyRound("点击“开始练习”后开始刷题。");
       return;
     }
+
+    el.questionCard.hidden = false;
+    el.roundCompletePanel.hidden = true;
+    el.questionActions.hidden = false;
 
     const instantAnswer = state.instantAnswers[question.id] || "";
     const batchAnswer = state.batchAnswers[question.id] || "";
@@ -497,6 +528,7 @@
     const isMulti = question && (question.type === "多选题" || question.answer.length > 1);
     const isBatch = state.judgeMode === "batch";
     const hasQuestion = Boolean(question);
+    const isLastQuestion = hasQuestion && state.currentIndex >= state.roundQuestions.length - 1;
 
     el.quickStartBtn.style.display = "none";
     el.submitAnswerBtn.style.display = hasQuestion && !isBatch && isMulti ? "" : "none";
@@ -505,10 +537,12 @@
     el.prevBtn.style.display = hasQuestion ? "" : "none";
     el.prevBtn.disabled = !hasQuestion || state.currentIndex <= 0;
     el.nextBtn.style.display = hasQuestion ? "" : "none";
-    el.nextBtn.textContent = state.currentIndex >= state.roundQuestions.length - 1 ? "已到最后一题" : "下一题";
-    el.nextBtn.disabled = !hasQuestion || state.currentIndex >= state.roundQuestions.length - 1;
-    el.submitRoundBtn.style.display = hasQuestion && isBatch ? "" : "none";
+    el.nextBtn.textContent = isLastQuestion ? "已到最后一题" : "下一题";
+    el.nextBtn.disabled = !hasQuestion || isLastQuestion;
+    el.finishRoundBtn.style.display = hasQuestion && !isBatch && isLastQuestion && !state.roundCompleted ? "" : "none";
+    el.submitRoundBtn.style.display = hasQuestion && isBatch && !state.batchSubmitted ? "" : "none";
     el.submitRoundBtn.disabled = !hasQuestion || state.batchSubmitted;
+    el.viewRoundResultBtn.style.display = hasQuestion && state.roundCompleted ? "" : "none";
     el.starBtn.disabled = !hasQuestion;
     el.masteredBtn.disabled = !hasQuestion;
   }
@@ -623,10 +657,43 @@
     goToQuestion(state.currentIndex + 1);
   }
 
+  function getRoundResult() {
+    const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
+    const result = { total: state.roundQuestions.length, correct: [], wrong: [], unanswered: [] };
+
+    state.roundQuestions.forEach((question, index) => {
+      const answer = normalizeAnswer(answers[question.id]);
+      const item = { question, answer, index };
+      if (!answer) {
+        result.unanswered.push(item);
+      } else if (answer === normalizeAnswer(question.answer)) {
+        result.correct.push(item);
+      } else {
+        result.wrong.push(item);
+      }
+    });
+
+    return result;
+  }
+
+  function finishRound() {
+    if (state.judgeMode !== "instant" || !state.roundQuestions.length) return;
+    const result = getRoundResult();
+    if (result.unanswered.length) {
+      goToQuestion(result.unanswered[0].index);
+      alert(`还有 ${result.unanswered.length} 道题未作答，已跳转到第一道未答题。`);
+      return;
+    }
+
+    state.roundCompleted = true;
+    savePracticeSession();
+    renderRoundComplete();
+  }
+
   function submitRound() {
     if (state.judgeMode !== "batch" || !state.roundQuestions.length) return;
     if (state.batchSubmitted) {
-      alert("本轮答案已经提交，请重新开始一轮练习。");
+      renderRoundComplete();
       return;
     }
 
@@ -636,72 +703,79 @@
       persistCurrentSelection();
     }
 
-    const missing = state.roundQuestions.filter((question) => !state.batchAnswers[question.id]);
-    if (missing.length) {
-      alert(`还有 ${missing.length} 道题未作答，请完成后再提交。`);
+    const result = getRoundResult();
+    if (result.unanswered.length) {
+      goToQuestion(result.unanswered[0].index);
+      alert(`还有 ${result.unanswered.length} 道题未作答，已跳转到第一道未答题。`);
       return;
     }
 
-    const wrongItems = [];
-    let correctCount = 0;
-
     state.roundQuestions.forEach((question) => {
       const answer = normalizeAnswer(state.batchAnswers[question.id]);
-      const correct = answer === normalizeAnswer(question.answer);
-      updateLearningRecord(question, answer, correct);
-      if (correct) {
-        correctCount += 1;
-      } else {
-        wrongItems.push({ question, answer });
-      }
+      updateLearningRecord(question, answer, answer === normalizeAnswer(question.answer));
     });
 
     state.batchSubmitted = true;
+    state.roundCompleted = true;
     savePracticeSession();
-    renderBatchResult(correctCount, wrongItems);
-    renderQuestionStats(getCurrentQuestion());
     renderSummary();
-    updateQuestionButtons(getCurrentQuestion());
+    renderRoundComplete();
   }
 
-  function renderBatchResult(correctCount, wrongItems) {
-    const total = state.roundQuestions.length;
-    const wrongCount = wrongItems.length;
-    const list = wrongItems.length
-      ? `<ol class="wrong-list">${wrongItems
-          .map(({ question, answer }) => `<li>第 ${question.id} 题：你的答案 ${escapeHtml(answer)}，正确答案 ${escapeHtml(question.answer)}</li>`)
-          .join("")}</ol>`
-      : "<p>本轮没有错题。</p>";
+  function renderRoundComplete() {
+    const result = getRoundResult();
+    if (!state.roundCompleted || result.unanswered.length) return;
 
-    el.roundStats.className = "round-stats";
-    el.roundStats.innerHTML = [
-      `<strong>本轮题数：</strong>${total}`,
-      `<strong>答对数量：</strong>${correctCount}`,
-      `<strong>答错数量：</strong>${wrongCount}`,
-      `<strong>正确率：</strong>${percent(correctCount / total)}`,
-      "<strong>错题列表：</strong>",
-      list,
-    ].join("<br>");
+    const accuracy = result.total ? result.correct.length / result.total : 0;
+    el.questionCard.hidden = true;
+    el.roundCompletePanel.hidden = false;
+    el.questionActions.hidden = true;
+    el.questionPosition.textContent = "本轮完成";
+    el.questionType.textContent = state.judgeMode === "batch" ? "批量提交" : "立即判题";
+    el.roundResultTotal.textContent = result.total;
+    el.roundResultCorrect.textContent = result.correct.length;
+    el.roundResultWrong.textContent = result.wrong.length;
+    el.roundResultAccuracy.textContent = percent(accuracy);
+    el.roundResultMessage.textContent = result.wrong.length
+      ? `本轮有 ${result.wrong.length} 道错题，可点击复查或立即重练。`
+      : "本轮全部答对，可以再练本轮巩固。";
+    el.retryWrongBtn.disabled = result.wrong.length === 0;
+    el.roundWrongReview.innerHTML = result.wrong.length
+      ? result.wrong
+          .map(
+            ({ question, answer, index }) => `
+              <button class="wrong-review-item" type="button" data-question-index="${index}">
+                <span class="wrong-review-number">题库 ${question.id} 号</span>
+                <strong>${escapeHtml(question.question)}</strong>
+                <span class="wrong-review-answer">你的答案：${escapeHtml(answer)} · 正确答案：${escapeHtml(
+                  question.answer,
+                )}（${escapeHtml(getAnswerText(question, question.answer))}）</span>
+              </button>`,
+          )
+          .join("")
+      : '<p class="round-perfect">本轮没有错题。</p>';
 
-    const question = getCurrentQuestion();
-    if (question) {
-      const answer = state.batchAnswers[question.id];
-      renderAnswerResult(question, answer, answer === normalizeAnswer(question.answer));
-    }
+    renderPracticeProgress();
+    renderRoundStats();
+    setView("practice");
   }
 
-  function renderStoredBatchResult() {
-    const wrongItems = [];
-    let correctCount = 0;
-    state.roundQuestions.forEach((question) => {
-      const answer = normalizeAnswer(state.batchAnswers[question.id]);
-      if (answer === normalizeAnswer(question.answer)) {
-        correctCount += 1;
-      } else {
-        wrongItems.push({ question, answer });
-      }
-    });
-    renderBatchResult(correctCount, wrongItems);
+  function reviewRoundQuestion(index) {
+    if (!state.roundCompleted || index < 0 || index >= state.roundQuestions.length) return;
+    state.currentIndex = index;
+    renderQuestion();
+    savePracticeSession();
+  }
+
+  function retryWrongRound() {
+    const wrongQuestions = getRoundResult().wrong.map(({ question }) => question);
+    if (!wrongQuestions.length) return;
+    el.judgeModeSelect.value = "instant";
+    beginRound(wrongQuestions, "instant", "本轮没有错题需要重练。");
+  }
+
+  function restartRound() {
+    beginRound(state.roundQuestions, state.judgeMode);
   }
 
   function renderQuestionStats(question) {
@@ -785,6 +859,18 @@
       return;
     }
 
+    if (state.roundCompleted) {
+      const result = getRoundResult();
+      el.roundStats.className = "round-stats";
+      el.roundStats.innerHTML = [
+        `<strong>本轮题数：</strong>${result.total}`,
+        `<strong>答对数量：</strong>${result.correct.length}`,
+        `<strong>答错数量：</strong>${result.wrong.length}`,
+        `<strong>正确率：</strong>${percent(result.total ? result.correct.length / result.total : 0)}`,
+      ].join("<br>");
+      return;
+    }
+
     const answered = getAnsweredCount();
     el.roundStats.className = "round-stats";
     el.roundStats.innerHTML = [
@@ -801,6 +887,9 @@
     if (!state.roundQuestions.length) {
       clearPracticeSession();
     }
+    el.questionCard.hidden = false;
+    el.roundCompletePanel.hidden = true;
+    el.questionActions.hidden = false;
     el.questionPosition.textContent = "未开始";
     el.questionType.textContent = "";
     el.questionTitle.textContent = message;
@@ -814,7 +903,11 @@
     el.submitAnswerBtn.style.display = "none";
     el.prevBtn.style.display = "none";
     el.nextBtn.style.display = "none";
+    el.finishRoundBtn.style.display = "none";
     el.submitRoundBtn.style.display = "none";
+    el.viewRoundResultBtn.style.display = "none";
+    el.starBtn.disabled = true;
+    el.masteredBtn.disabled = true;
     renderPracticeProgress();
     renderQuestionStats(null);
     renderRoundStats();
@@ -925,7 +1018,16 @@
     el.submitAnswerBtn.addEventListener("click", submitCurrentAnswer);
     el.prevBtn.addEventListener("click", previousQuestion);
     el.nextBtn.addEventListener("click", nextQuestion);
+    el.finishRoundBtn.addEventListener("click", finishRound);
     el.submitRoundBtn.addEventListener("click", submitRound);
+    el.viewRoundResultBtn.addEventListener("click", renderRoundComplete);
+    el.retryWrongBtn.addEventListener("click", retryWrongRound);
+    el.restartRoundBtn.addEventListener("click", restartRound);
+    el.completeSettingsBtn.addEventListener("click", () => setView("settings"));
+    el.roundWrongReview.addEventListener("click", (event) => {
+      const item = event.target.closest && event.target.closest("[data-question-index]");
+      if (item) reviewRoundQuestion(Number(item.dataset.questionIndex));
+    });
     el.starBtn.addEventListener("click", toggleStarred);
     el.masteredBtn.addEventListener("click", toggleMastered);
     el.exportRecordsBtn.addEventListener("click", exportRecords);
@@ -941,10 +1043,8 @@
     setView("practice");
     if (restorePracticeSession()) {
       el.judgeModeSelect.value = state.judgeMode;
-      renderQuestion();
-      if (state.batchSubmitted) {
-        renderStoredBatchResult();
-      }
+      if (state.roundCompleted) renderRoundComplete();
+      else renderQuestion();
       return;
     }
     renderEmptyRound(questions.length ? "点击“开始练习”后开始刷题。" : "没有加载到题库，请先运行 node parser.js 生成 questions.js。");

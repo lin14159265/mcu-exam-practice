@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>单片机期末复习刷题系统</title>
+    <link rel="icon" href="data:,">
     <script>
       (function () {
         try {
@@ -14,7 +15,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260618-continuity1">
+    <link rel="stylesheet" href="style.css?v=20260618-roundreview1">
   </head>
   <body>
     <header class="app-header">
@@ -43,7 +44,7 @@
               <span id="questionPosition">未开始</span>
               <span id="questionType" class="type-tag"></span>
             </div>
-            <div class="question-actions">
+            <div id="questionActions" class="question-actions">
               <button id="starBtn" type="button">收藏</button>
               <button id="masteredBtn" type="button">标记掌握</button>
             </div>
@@ -56,7 +57,7 @@
             <span id="practiceProgressText">已完成 0 / 0</span>
           </div>
 
-          <article class="question-card">
+          <article id="questionCard" class="question-card">
             <div class="question-card-topline" aria-hidden="true"></div>
             <h2 id="questionTitle">点击“设置与数据”配置练习，或直接开始默认练习。</h2>
             <div id="optionsBox" class="options-box"></div>
@@ -67,9 +68,39 @@
               <button id="submitAnswerBtn" class="primary" type="button">提交本题</button>
               <button id="prevBtn" type="button">上一题</button>
               <button id="nextBtn" type="button">下一题</button>
+              <button id="finishRoundBtn" class="primary" type="button">查看本轮结果</button>
               <button id="submitRoundBtn" class="primary" type="button">提交本轮答案</button>
+              <button id="viewRoundResultBtn" class="primary" type="button">返回本轮结果</button>
             </div>
           </article>
+
+          <section id="roundCompletePanel" class="round-complete-panel" aria-labelledby="roundCompleteTitle" hidden>
+            <header class="round-complete-header">
+              <h2 id="roundCompleteTitle">本轮完成</h2>
+              <p id="roundResultMessage">本轮结果已生成。</p>
+            </header>
+
+            <div class="round-result-summary" aria-label="本轮答题结果">
+              <div><span id="roundResultTotal">0</span><small>本轮题数</small></div>
+              <div><span id="roundResultCorrect">0</span><small>答对</small></div>
+              <div><span id="roundResultWrong">0</span><small>答错</small></div>
+              <div><span id="roundResultAccuracy">0%</span><small>正确率</small></div>
+            </div>
+
+            <section class="round-review-section" aria-labelledby="roundWrongTitle">
+              <div class="round-review-header">
+                <h3 id="roundWrongTitle">错题回顾</h3>
+                <p>点击题目可查看本轮作答和正确答案。</p>
+              </div>
+              <div id="roundWrongReview" class="round-wrong-review"></div>
+            </section>
+
+            <div class="button-row round-complete-actions">
+              <button id="retryWrongBtn" class="primary" type="button">立即重练错题</button>
+              <button id="restartRoundBtn" type="button">再练本轮</button>
+              <button id="completeSettingsBtn" type="button">设置与数据</button>
+            </div>
+          </section>
         </section>
       </section>
 
@@ -181,7 +212,7 @@
       </section>
     </main>
 
-    <script src="questions.js?v=20260618-continuity1"></script>
-    <script src="app.js?v=20260618-continuity1"></script>
+    <script src="questions.js?v=20260618-roundreview1"></script>
+    <script src="app.js?v=20260618-roundreview1"></script>
   </body>
 </html>
