@@ -50,6 +50,11 @@
     practiceProgress: document.getElementById("practiceProgress"),
     practiceProgressBar: document.getElementById("practiceProgressBar"),
     practiceProgressText: document.getElementById("practiceProgressText"),
+    questionNavigatorBtn: document.getElementById("questionNavigatorBtn"),
+    questionNavigatorDialog: document.getElementById("questionNavigatorDialog"),
+    questionNavigatorSummary: document.getElementById("questionNavigatorSummary"),
+    questionNavigatorGrid: document.getElementById("questionNavigatorGrid"),
+    closeNavigatorBtn: document.getElementById("closeNavigatorBtn"),
     starBtn: document.getElementById("starBtn"),
     masteredBtn: document.getElementById("masteredBtn"),
     questionCard: document.getElementById("questionCard"),
@@ -832,12 +837,98 @@
     return state.roundQuestions.reduce((count, question) => count + (answers[question.id] ? 1 : 0), 0);
   }
 
+  function getQuestionRoundStatus(question) {
+    const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
+    const answer = normalizeAnswer(answers[question.id]);
+    if (!answer) return "unanswered";
+    if (state.judgeMode === "batch" && !state.batchSubmitted) return "answered";
+    return answer === normalizeAnswer(question.answer) ? "correct" : "wrong";
+  }
+
+  function getQuestionStatusLabel(status) {
+    return {
+      unanswered: "未答",
+      answered: "已答",
+      correct: "答对",
+      wrong: "答错",
+    }[status];
+  }
+
+  function renderQuestionNavigator() {
+    const total = state.roundQuestions.length;
+    if (!total) {
+      el.questionNavigatorBtn.hidden = true;
+      el.questionNavigatorSummary.textContent = "本轮尚未开始。";
+      el.questionNavigatorGrid.innerHTML = "";
+      if (el.questionNavigatorDialog.open) el.questionNavigatorDialog.close();
+      return;
+    }
+
+    const answered = getAnsweredCount();
+    el.questionNavigatorBtn.hidden = false;
+    el.questionNavigatorSummary.textContent = state.roundCompleted
+      ? `本轮已完成，共 ${total} 题。点击题号可复查答案。`
+      : `已完成 ${answered} / ${total}，当前第 ${state.currentIndex + 1} 题。`;
+    el.questionNavigatorGrid.innerHTML = state.roundQuestions
+      .map((question, index) => {
+        const status = getQuestionRoundStatus(question);
+        const isCurrent = index === state.currentIndex;
+        const statusLabel = getQuestionStatusLabel(status);
+        const currentLabel = isCurrent ? "，当前题" : "";
+        return `
+          <button
+            class="navigator-index ${status}${isCurrent ? " current" : ""}"
+            type="button"
+            data-round-index="${index}"
+            aria-label="第 ${index + 1} 题，题库 ${question.id} 号，${statusLabel}${currentLabel}"
+            ${isCurrent ? 'aria-current="step"' : ""}
+          >
+            <span>${index + 1}</span>
+            <small>#${question.id}</small>
+          </button>`;
+      })
+      .join("");
+  }
+
+  function openQuestionNavigator() {
+    if (!state.roundQuestions.length) return;
+    renderQuestionNavigator();
+    if (!el.questionNavigatorDialog.open) {
+      if (typeof el.questionNavigatorDialog.showModal === "function") {
+        el.questionNavigatorDialog.showModal();
+      } else {
+        el.questionNavigatorDialog.setAttribute("open", "");
+      }
+    }
+    requestAnimationFrame(() => {
+      const current = el.questionNavigatorGrid.querySelector("[aria-current='step']");
+      if (current) {
+        current.focus({ preventScroll: true });
+        current.scrollIntoView({ block: "nearest" });
+      }
+    });
+  }
+
+  function closeQuestionNavigator() {
+    if (el.questionNavigatorDialog.open) el.questionNavigatorDialog.close();
+  }
+
+  function navigateFromQuestionNavigator(index) {
+    closeQuestionNavigator();
+    if (state.roundCompleted) {
+      reviewRoundQuestion(index);
+    } else if (index !== state.currentIndex) {
+      goToQuestion(index);
+    }
+  }
+
   function renderPracticeProgress() {
     const total = state.roundQuestions.length;
     if (!total) {
       el.practiceProgress.hidden = true;
       el.practiceProgressBar.style.width = "0%";
       el.practiceProgressText.textContent = "已完成 0 / 0";
+      renderQuestionNavigator();
       return;
     }
 
@@ -850,6 +941,7 @@
     el.practiceProgress.setAttribute("aria-valuenow", String(answered));
     el.practiceProgressBar.style.width = `${progress}%`;
     el.practiceProgressText.textContent = `已完成 ${answered} / ${total}`;
+    renderQuestionNavigator();
   }
 
   function renderRoundStats() {
@@ -1012,6 +1104,19 @@
     el.viewPracticeBtn.addEventListener("click", () => setView("practice"));
     el.viewSettingsBtn.addEventListener("click", () => setView("settings"));
     el.themeToggleBtn.addEventListener("click", toggleTheme);
+    el.questionNavigatorBtn.addEventListener("click", openQuestionNavigator);
+    el.closeNavigatorBtn.addEventListener("click", closeQuestionNavigator);
+    el.questionNavigatorGrid.addEventListener("click", (event) => {
+      const item = event.target.closest && event.target.closest("[data-round-index]");
+      if (item) navigateFromQuestionNavigator(Number(item.dataset.roundIndex));
+    });
+    el.questionNavigatorDialog.addEventListener("click", (event) => {
+      if (event.target !== el.questionNavigatorDialog) return;
+      const rect = el.questionNavigatorDialog.getBoundingClientRect();
+      const outside =
+        event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+      if (outside) closeQuestionNavigator();
+    });
     el.quickStartBtn.addEventListener("click", () => el.startBtn.click());
     el.startBtn.addEventListener("click", startRound);
     el.resetRoundBtn.addEventListener("click", resetRound);

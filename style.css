@@ -269,12 +269,200 @@ button.danger {
   transition: width 0.22s ease;
 }
 
+.practice-progress-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 #practiceProgressText {
   min-width: 92px;
   color: var(--muted);
   font-size: 13px;
   font-weight: 800;
   text-align: right;
+}
+
+.navigator-trigger {
+  min-height: 34px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.question-navigator-dialog {
+  width: min(720px, calc(100% - 32px));
+  max-height: min(78vh, 720px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.question-navigator-dialog[open] {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.question-navigator-dialog::backdrop {
+  background: rgba(7, 18, 22, 0.62);
+  backdrop-filter: blur(2px);
+}
+
+.navigator-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.navigator-dialog-header h2 {
+  margin: 0 0 5px;
+  color: var(--text-strong);
+  font-size: 20px;
+}
+
+.navigator-dialog-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dialog-close {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  min-width: 42px;
+  height: 42px;
+  padding: 0;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.navigator-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-soft);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.navigator-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  background: var(--panel);
+}
+
+.legend-swatch.answered {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.legend-swatch.correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+}
+
+.legend-swatch.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.legend-swatch.current {
+  border-color: var(--panel);
+  background: var(--panel);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.question-navigator-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(42px, 1fr));
+  gap: 9px;
+  min-height: 0;
+  padding: 18px 20px 22px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.navigator-index {
+  display: grid;
+  place-items: center;
+  gap: 1px;
+  aspect-ratio: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 4px;
+  background: var(--panel);
+}
+
+.navigator-index span {
+  color: var(--text-strong);
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.navigator-index small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.navigator-index.answered {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.navigator-index.correct {
+  border-color: color-mix(in srgb, var(--success) 55%, var(--border));
+  background: var(--success-bg);
+}
+
+.navigator-index.wrong {
+  border-color: color-mix(in srgb, var(--danger) 55%, var(--border));
+  background: var(--danger-bg);
+}
+
+:root[data-theme="github-dark"] .navigator-index.answered,
+:root[data-theme="github-dark"] .legend-swatch.answered {
+  border-color: #58a6ff;
+  background: #172d4d;
+}
+
+:root[data-theme="github-dark"] .navigator-index.correct,
+:root[data-theme="github-dark"] .legend-swatch.correct {
+  border-color: #3fb950;
+  background: #183c24;
+}
+
+:root[data-theme="github-dark"] .navigator-index.wrong,
+:root[data-theme="github-dark"] .legend-swatch.wrong {
+  border-color: #ff7b72;
+  background: #462126;
+}
+
+.navigator-index.current {
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.navigator-index:hover {
+  transform: none;
 }
 
 #questionPosition {
@@ -881,9 +1069,39 @@ select {
     gap: 7px;
   }
 
+  .practice-progress-meta {
+    justify-content: space-between;
+  }
+
   #practiceProgressText {
     min-width: 0;
     text-align: left;
+  }
+
+  .question-navigator-dialog {
+    width: 100%;
+    max-width: none;
+    max-height: 82dvh;
+    margin: auto 0 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .navigator-dialog-header {
+    padding: 14px 16px;
+  }
+
+  .navigator-legend {
+    gap: 8px 12px;
+    padding: 10px 16px;
+  }
+
+  .question-navigator-grid {
+    grid-template-columns: repeat(5, minmax(48px, 1fr));
+    gap: 10px;
+    padding: 16px;
   }
 
   .question-actions,

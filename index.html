@@ -15,7 +15,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260618-roundreview1">
+    <link rel="stylesheet" href="style.css?v=20260618-navigator1">
   </head>
   <body>
     <header class="app-header">
@@ -54,7 +54,10 @@
             <div class="practice-progress-track" aria-hidden="true">
               <div id="practiceProgressBar" class="practice-progress-bar"></div>
             </div>
-            <span id="practiceProgressText">已完成 0 / 0</span>
+            <div class="practice-progress-meta">
+              <span id="practiceProgressText">已完成 0 / 0</span>
+              <button id="questionNavigatorBtn" class="navigator-trigger" type="button">题目导航</button>
+            </div>
           </div>
 
           <article id="questionCard" class="question-card">
@@ -212,7 +215,27 @@
       </section>
     </main>
 
-    <script src="questions.js?v=20260618-roundreview1"></script>
-    <script src="app.js?v=20260618-roundreview1"></script>
+    <dialog id="questionNavigatorDialog" class="question-navigator-dialog" aria-labelledby="questionNavigatorTitle">
+      <header class="navigator-dialog-header">
+        <div>
+          <h2 id="questionNavigatorTitle">题目导航</h2>
+          <p id="questionNavigatorSummary">本轮尚未开始。</p>
+        </div>
+        <button id="closeNavigatorBtn" class="dialog-close" type="button" aria-label="关闭题目导航" title="关闭题目导航">×</button>
+      </header>
+
+      <div class="navigator-legend" aria-label="题目状态说明">
+        <span><i class="legend-swatch unanswered"></i>未答</span>
+        <span><i class="legend-swatch answered"></i>已答</span>
+        <span><i class="legend-swatch correct"></i>答对</span>
+        <span><i class="legend-swatch wrong"></i>答错</span>
+        <span><i class="legend-swatch current"></i>当前</span>
+      </div>
+
+      <div id="questionNavigatorGrid" class="question-navigator-grid" aria-label="本轮题号"></div>
+    </dialog>
+
+    <script src="questions.js?v=20260618-navigator1"></script>
+    <script src="app.js?v=20260618-navigator1"></script>
   </body>
 </html>
