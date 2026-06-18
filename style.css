@@ -746,9 +746,76 @@ button.danger {
 .explanation-box {
   display: none;
   margin-bottom: 12px;
-  border: 1px solid color-mix(in srgb, var(--amber) 35%, var(--border));
+  border: 1px solid var(--border);
+  background: var(--panel-soft);
+  color: var(--text);
+}
+
+.explanation-box.verified {
+  border-color: color-mix(in srgb, var(--success) 35%, var(--border));
+  background: var(--success-bg);
+}
+
+.explanation-box.needs-review {
+  border-color: color-mix(in srgb, var(--amber) 40%, var(--border));
   background: var(--amber-soft);
+}
+
+.explanation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.explanation-header strong {
+  color: var(--text-strong);
+  font-size: 15px;
+}
+
+.explanation-badge {
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--success) 40%, var(--border));
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.needs-review .explanation-badge {
+  border-color: color-mix(in srgb, var(--amber) 45%, var(--border));
   color: var(--amber);
+}
+
+.explanation-box p {
+  margin: 0;
+}
+
+.explanation-sources {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--success) 25%, var(--border));
+}
+
+.explanation-source {
+  display: grid;
+  gap: 1px;
+  color: var(--accent);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.explanation-source:hover,
+.explanation-source:focus-visible {
+  text-decoration: underline;
+}
+
+.explanation-source small {
+  color: var(--muted);
 }
 
 .question-buttons {

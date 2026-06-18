@@ -534,6 +534,7 @@
           : "批量提交模式：选择答案后自动保存，提交本轮前不会显示正确答案。"
         : "请选择答案。";
     el.explanationBox.style.display = "none";
+    el.explanationBox.className = "explanation-box";
     el.explanationBox.textContent = "";
 
     renderOptions(question);
@@ -735,10 +736,58 @@
       ].join("<br>");
     }
 
-    if (question.explanation) {
-      el.explanationBox.style.display = "block";
-      el.explanationBox.textContent = `解析：${question.explanation}`;
+    renderExplanation(question);
+  }
+
+  function renderExplanation(question) {
+    el.explanationBox.replaceChildren();
+    if (!question.explanation) {
+      el.explanationBox.style.display = "none";
+      return;
     }
+
+    const isVerified = question.explanationStatus === "verified";
+    el.explanationBox.className = `explanation-box ${isVerified ? "verified" : "needs-review"}`;
+
+    const header = document.createElement("div");
+    header.className = "explanation-header";
+    const title = document.createElement("strong");
+    title.textContent = isVerified ? "题目解析" : "参考解析";
+    const badge = document.createElement("span");
+    badge.className = "explanation-badge";
+    badge.textContent = isVerified
+      ? question.explanationConfidence === "high"
+        ? "官方资料核验"
+        : "原厂手册核验"
+      : "待人工复核";
+    header.append(title, badge);
+
+    const body = document.createElement("p");
+    body.textContent = question.explanation;
+    el.explanationBox.append(header, body);
+
+    const sources = isVerified && Array.isArray(question.sources) ? question.sources : [];
+    if (sources.length) {
+      const sourceList = document.createElement("div");
+      sourceList.className = "explanation-sources";
+      sources.forEach((source) => {
+        const link = document.createElement("a");
+        link.href = source.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.className = "explanation-source";
+
+        const sourceName = document.createElement("span");
+        sourceName.textContent = [source.publisher, source.documentId].filter(Boolean).join(" · ");
+        const sourceDetail = document.createElement("small");
+        sourceDetail.textContent = `${source.title} · ${source.locator}`;
+        link.append(sourceName, sourceDetail);
+        sourceList.appendChild(link);
+      });
+      el.explanationBox.appendChild(sourceList);
+    }
+
+    el.explanationBox.style.display = "block";
   }
 
   function markOptionResult(question, answer) {
@@ -1098,6 +1147,7 @@
       ? `当前设置：${getPracticeConfigSummary()}。更多选项可在“设置与数据”中调整。`
       : message;
     el.explanationBox.style.display = "none";
+    el.explanationBox.className = "explanation-box";
     el.quickStartBtn.style.display = questions.length ? "" : "none";
     el.submitAnswerBtn.style.display = "none";
     el.prevBtn.style.display = "none";
