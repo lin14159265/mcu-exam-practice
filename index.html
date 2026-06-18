@@ -15,7 +15,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260618-explanations2">
+    <link rel="stylesheet" href="style.css?v=20260618-uncertain1">
   </head>
   <body>
     <header class="app-header">
@@ -46,6 +46,7 @@
             </div>
             <div id="questionActions" class="question-actions">
               <button id="starBtn" type="button">收藏</button>
+              <button id="uncertainBtn" type="button" aria-pressed="false">不确定</button>
               <button id="masteredBtn" type="button">标记掌握</button>
             </div>
           </div>
@@ -199,6 +200,7 @@
                 <div><dt>错误率</dt><dd id="currentWrongRate">0%</dd></div>
                 <div><dt>连续答对</dt><dd id="currentStreak">0</dd></div>
                 <div><dt>已掌握</dt><dd id="currentMastered">否</dd></div>
+                <div><dt>不确定</dt><dd id="currentUncertain">否</dd></div>
                 <div><dt>已收藏</dt><dd id="currentStarred">否</dd></div>
               </dl>
             </section>
@@ -235,7 +237,7 @@
       <div id="questionNavigatorGrid" class="question-navigator-grid" aria-label="本轮题号"></div>
     </dialog>
 
-    <script src="questions.js?v=20260618-explanations2"></script>
-    <script src="app.js?v=20260618-explanations2"></script>
+    <script src="questions.js?v=20260618-uncertain1"></script>
+    <script src="app.js?v=20260618-uncertain1"></script>
   </body>
 </html>

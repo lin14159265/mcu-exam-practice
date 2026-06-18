@@ -70,6 +70,7 @@
     questionNavigatorGrid: document.getElementById("questionNavigatorGrid"),
     closeNavigatorBtn: document.getElementById("closeNavigatorBtn"),
     starBtn: document.getElementById("starBtn"),
+    uncertainBtn: document.getElementById("uncertainBtn"),
     masteredBtn: document.getElementById("masteredBtn"),
     questionCard: document.getElementById("questionCard"),
     questionTitle: document.getElementById("questionTitle"),
@@ -99,6 +100,7 @@
     currentWrongRate: document.getElementById("currentWrongRate"),
     currentStreak: document.getElementById("currentStreak"),
     currentMastered: document.getElementById("currentMastered"),
+    currentUncertain: document.getElementById("currentUncertain"),
     currentStarred: document.getElementById("currentStarred"),
     roundStats: document.getElementById("roundStats"),
   };
@@ -114,6 +116,7 @@
       lastTime: "",
       consecutiveCorrect: 0,
       mastered: false,
+      uncertain: false,
       starred: false,
     };
   }
@@ -143,9 +146,13 @@
         wrongCount: Number(item.wrongCount || 0),
         consecutiveCorrect: Number(item.consecutiveCorrect || 0),
         mastered: Boolean(item.mastered),
+        uncertain: Boolean(item.uncertain),
         starred: Boolean(item.starred),
         lastCorrect: item.lastCorrect === null || typeof item.lastCorrect === "boolean" ? item.lastCorrect : null,
       };
+      if (output[id].uncertain) {
+        output[id].mastered = false;
+      }
     });
     return output;
   }
@@ -658,6 +665,7 @@
     el.submitRoundBtn.disabled = !hasQuestion || state.batchSubmitted;
     el.viewRoundResultBtn.style.display = hasQuestion && state.roundCompleted ? "" : "none";
     el.starBtn.disabled = !hasQuestion;
+    el.uncertainBtn.disabled = !hasQuestion;
     el.masteredBtn.disabled = !hasQuestion;
   }
 
@@ -716,6 +724,7 @@
     // 连续答对 3 次自动掌握；手动取消后，后续再次连续 3 次仍会自动恢复掌握。
     if (record.consecutiveCorrect >= 3) {
       record.mastered = true;
+      record.uncertain = false;
     }
 
     saveRecords();
@@ -947,8 +956,12 @@
       el.currentWrongRate.textContent = "0%";
       el.currentStreak.textContent = "0";
       el.currentMastered.textContent = "否";
+      el.currentUncertain.textContent = "否";
       el.currentStarred.textContent = "否";
       el.starBtn.textContent = "收藏";
+      el.uncertainBtn.textContent = "不确定";
+      el.uncertainBtn.classList.remove("is-active");
+      el.uncertainBtn.setAttribute("aria-pressed", "false");
       el.masteredBtn.textContent = "标记掌握";
       return;
     }
@@ -960,8 +973,12 @@
     el.currentWrongRate.textContent = percent(getWrongRate(record));
     el.currentStreak.textContent = record.consecutiveCorrect;
     el.currentMastered.textContent = record.mastered ? "是" : "否";
+    el.currentUncertain.textContent = record.uncertain ? "是" : "否";
     el.currentStarred.textContent = record.starred ? "是" : "否";
     el.starBtn.textContent = record.starred ? "取消收藏" : "收藏";
+    el.uncertainBtn.textContent = record.uncertain ? "取消不确定" : "不确定";
+    el.uncertainBtn.classList.toggle("is-active", record.uncertain);
+    el.uncertainBtn.setAttribute("aria-pressed", String(record.uncertain));
     el.masteredBtn.textContent = record.mastered ? "取消掌握" : "标记掌握";
   }
 
@@ -1156,6 +1173,7 @@
     el.submitRoundBtn.style.display = "none";
     el.viewRoundResultBtn.style.display = "none";
     el.starBtn.disabled = true;
+    el.uncertainBtn.disabled = true;
     el.masteredBtn.disabled = true;
     renderPracticeProgress();
     renderQuestionStats(null);
@@ -1173,11 +1191,28 @@
     renderSummary();
   }
 
+  function toggleUncertain() {
+    const question = getCurrentQuestion();
+    if (!question) return;
+    const record = getRecord(question.id);
+    record.uncertain = !record.uncertain;
+    if (record.uncertain) {
+      record.mastered = false;
+      record.consecutiveCorrect = 0;
+    }
+    saveRecords();
+    renderQuestionStats(question);
+    renderSummary();
+  }
+
   function toggleMastered() {
     const question = getCurrentQuestion();
     if (!question) return;
     const record = getRecord(question.id);
     record.mastered = !record.mastered;
+    if (record.mastered) {
+      record.uncertain = false;
+    }
     if (!record.mastered && record.consecutiveCorrect >= 3) {
       record.consecutiveCorrect = 0;
     }
@@ -1374,6 +1409,7 @@
       if (item) reviewRoundQuestion(Number(item.dataset.questionIndex));
     });
     el.starBtn.addEventListener("click", toggleStarred);
+    el.uncertainBtn.addEventListener("click", toggleUncertain);
     el.masteredBtn.addEventListener("click", toggleMastered);
     el.exportRecordsBtn.addEventListener("click", exportRecords);
     el.importRecordsInput.addEventListener("change", importRecords);
