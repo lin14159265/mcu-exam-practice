@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="lab-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>单片机期末复习刷题系统</title>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("mcu_exam_practice_theme_v1") || "lab-light";
+          document.documentElement.dataset.theme = theme === "github-dark" ? "github-dark" : "lab-light";
+        } catch (error) {
+          document.documentElement.dataset.theme = "lab-light";
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css?v=20260617-quickstart2">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">51</div>
+        <div>
+          <h1>单片机期末复习刷题系统</h1>
+          <p>专注做题 · 错题强化 · 本地记录</p>
+        </div>
+      </div>
+      <nav class="app-nav" aria-label="页面导航">
+        <button id="viewPracticeBtn" class="nav-button is-active" type="button">做题</button>
+        <button id="viewSettingsBtn" class="nav-button" type="button">设置与数据</button>
+        <button id="themeToggleBtn" class="nav-button theme-button" type="button">
+          <span aria-hidden="true">◐</span>
+          <span id="themeLabel">GitHub Dark</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="app-main">
+      <section id="practiceView" class="app-view practice-view is-active" aria-label="做题页">
+        <section class="question-panel" aria-live="polite">
+          <div class="question-toolbar">
+            <div>
+              <span id="questionPosition">未开始</span>
+              <span id="questionType" class="type-tag"></span>
+            </div>
+            <div class="question-actions">
+              <button id="starBtn" type="button">收藏</button>
+              <button id="masteredBtn" type="button">标记掌握</button>
+            </div>
+          </div>
+
+          <article class="question-card">
+            <div class="question-card-topline" aria-hidden="true"></div>
+            <h2 id="questionTitle">点击“设置与数据”配置练习，或直接开始默认练习。</h2>
+            <div id="optionsBox" class="options-box"></div>
+            <div id="resultBox" class="result-box muted">当前没有进行中的练习。</div>
+            <div id="explanationBox" class="explanation-box"></div>
+            <div class="button-row question-buttons">
+              <button id="quickStartBtn" class="primary" type="button">开始练习</button>
+              <button id="submitAnswerBtn" class="primary" type="button">提交本题</button>
+              <button id="nextBtn" type="button">下一题</button>
+              <button id="submitRoundBtn" class="primary" type="button">提交本轮答案</button>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <section id="settingsView" class="app-view settings-view" aria-label="设置与数据页" hidden>
+        <section class="summary-grid" aria-label="总体统计">
+          <div class="summary-card"><small>总题数</small><span id="totalCount">0</span></div>
+          <div class="summary-card"><small>已做题数</small><span id="doneCount">0</span></div>
+          <div class="summary-card warning"><small>错题数</small><span id="wrongCount">0</span></div>
+          <div class="summary-card success"><small>总正确率</small><span id="accuracyRate">0%</span></div>
+          <div class="summary-card"><small>已掌握</small><span id="masteredCount">0</span></div>
+        </section>
+
+        <div class="settings-layout">
+          <aside class="control-panel" aria-label="练习控制">
+            <section class="panel-section">
+              <div class="section-title">
+                <span aria-hidden="true">⚙</span>
+                <h2>练习设置</h2>
+              </div>
+              <label>
+                练习范围
+                <select id="scopeSelect">
+                  <option value="all">全部题目</option>
+                  <option value="unattempted">未做题</option>
+                  <option value="wrongHistory">做错过的题</option>
+                  <option value="wrong1">错误次数 ≥ 1</option>
+                  <option value="wrong2">错误次数 ≥ 2</option>
+                  <option value="wrong3">错误次数 ≥ 3</option>
+                  <option value="errorRate50">错误率 ≥ 50%</option>
+                  <option value="lastWrong">最近一次做错</option>
+                  <option value="starred">收藏题</option>
+                  <option value="unmastered">未掌握题</option>
+                </select>
+              </label>
+              <label class="check-row">
+                <input id="excludeMasteredWrong" type="checkbox" checked>
+                错题类筛选默认排除已掌握
+              </label>
+              <label>
+                本轮题数
+                <select id="roundSizeSelect">
+                  <option value="10">10 题</option>
+                  <option value="20">20 题</option>
+                  <option value="50">50 题</option>
+                  <option value="all">全部</option>
+                </select>
+              </label>
+              <label>
+                出题顺序
+                <select id="orderSelect">
+                  <option value="sequential">顺序</option>
+                  <option value="random">随机</option>
+                </select>
+              </label>
+              <label>
+                判题方式
+                <select id="judgeModeSelect">
+                  <option value="instant">立即判题</option>
+                  <option value="batch">批量提交</option>
+                </select>
+              </label>
+              <div class="button-row">
+                <button id="startBtn" class="primary" type="button">开始练习</button>
+                <button id="resetRoundBtn" type="button">重置当前练习</button>
+              </div>
+            </section>
+
+            <section class="panel-section">
+              <div class="section-title">
+                <span aria-hidden="true">↧</span>
+                <h2>数据管理</h2>
+              </div>
+              <button id="exportRecordsBtn" type="button">导出学习记录</button>
+              <label class="file-button">
+                导入学习记录
+                <input id="importRecordsInput" type="file" accept="application/json,.json">
+              </label>
+              <button id="exportWrongBtn" type="button">导出错题列表</button>
+              <button id="clearRecordsBtn" type="button" class="danger">清空学习记录</button>
+            </section>
+          </aside>
+
+          <aside class="stats-panel" aria-label="统计信息">
+            <section class="panel-section">
+              <div class="section-title">
+                <span aria-hidden="true">⌁</span>
+                <h2>当前题历史</h2>
+              </div>
+              <dl class="stat-list">
+                <div><dt>已做次数</dt><dd id="currentAttempts">0</dd></div>
+                <div><dt>正确次数</dt><dd id="currentCorrect">0</dd></div>
+                <div><dt>错误次数</dt><dd id="currentWrong">0</dd></div>
+                <div><dt>错误率</dt><dd id="currentWrongRate">0%</dd></div>
+                <div><dt>连续答对</dt><dd id="currentStreak">0</dd></div>
+                <div><dt>已掌握</dt><dd id="currentMastered">否</dd></div>
+                <div><dt>已收藏</dt><dd id="currentStarred">否</dd></div>
+              </dl>
+            </section>
+
+            <section class="panel-section">
+              <div class="section-title">
+                <span aria-hidden="true">▦</span>
+                <h2>本轮统计</h2>
+              </div>
+              <div id="roundStats" class="round-stats muted">尚未开始本轮练习。</div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="questions.js?v=20260617-quickstart2"></script>
+    <script src="app.js?v=20260617-quickstart2"></script>
+  </body>
+</html>
