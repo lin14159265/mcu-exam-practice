@@ -245,6 +245,38 @@ button.danger {
   margin-bottom: 12px;
 }
 
+.practice-progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.practice-progress-track {
+  height: 7px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--panel-strong);
+}
+
+.practice-progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width 0.22s ease;
+}
+
+#practiceProgressText {
+  min-width: 92px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+}
+
 #questionPosition {
   color: var(--muted);
   font-weight: 900;
@@ -675,8 +707,18 @@ select {
     padding-right: 16px;
   }
 
+  .app-header {
+    gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
   .app-header h1 {
     font-size: 21px;
+  }
+
+  .app-header p {
+    display: none;
   }
 
   .brand-mark {
@@ -686,13 +728,16 @@ select {
 
   .app-nav {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
   }
 
   .theme-button {
-    grid-column: 1 / -1;
     justify-content: center;
+  }
+
+  #themeLabel {
+    display: none;
   }
 
   .summary-grid {
@@ -702,6 +747,16 @@ select {
   .question-toolbar {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .practice-progress {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  #practiceProgressText {
+    min-width: 0;
+    text-align: left;
   }
 
   .question-actions,

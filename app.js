@@ -3,6 +3,7 @@
 
   const STORAGE_KEY = "mcu_exam_practice_records_v1";
   const THEME_STORAGE_KEY = "mcu_exam_practice_theme_v1";
+  const SESSION_STORAGE_KEY = "mcu_exam_practice_session_v1";
   const questions = Array.isArray(window.QUESTION_BANK) ? window.QUESTION_BANK : [];
 
   const state = {
@@ -12,6 +13,8 @@
     judgeMode: "instant",
     currentSubmitted: false,
     currentSelection: [],
+    draftAnswers: {},
+    instantAnswers: {},
     batchAnswers: {},
     batchSubmitted: false,
     activeView: "practice",
@@ -42,6 +45,9 @@
     clearRecordsBtn: document.getElementById("clearRecordsBtn"),
     questionPosition: document.getElementById("questionPosition"),
     questionType: document.getElementById("questionType"),
+    practiceProgress: document.getElementById("practiceProgress"),
+    practiceProgressBar: document.getElementById("practiceProgressBar"),
+    practiceProgressText: document.getElementById("practiceProgressText"),
     starBtn: document.getElementById("starBtn"),
     masteredBtn: document.getElementById("masteredBtn"),
     questionTitle: document.getElementById("questionTitle"),
@@ -50,6 +56,7 @@
     explanationBox: document.getElementById("explanationBox"),
     quickStartBtn: document.getElementById("quickStartBtn"),
     submitAnswerBtn: document.getElementById("submitAnswerBtn"),
+    prevBtn: document.getElementById("prevBtn"),
     nextBtn: document.getElementById("nextBtn"),
     submitRoundBtn: document.getElementById("submitRoundBtn"),
     currentAttempts: document.getElementById("currentAttempts"),
@@ -129,12 +136,92 @@
     }
   }
 
+  function clearPracticeSession() {
+    try {
+      localStorage.removeItem(SESSION_STORAGE_KEY);
+    } catch (error) {
+      console.error("当前练习清理失败：", error);
+    }
+  }
+
+  function savePracticeSession() {
+    if (!state.roundQuestions.length) {
+      clearPracticeSession();
+      return;
+    }
+
+    try {
+      // 当前轮次与历史学习记录分开保存，恢复页面时不会重复累计答题次数。
+      localStorage.setItem(
+        SESSION_STORAGE_KEY,
+        JSON.stringify({
+          version: 1,
+          savedAt: new Date().toISOString(),
+          roundQuestionIds: state.roundQuestions.map((question) => question.id),
+          currentIndex: state.currentIndex,
+          judgeMode: state.judgeMode,
+          draftAnswers: state.draftAnswers,
+          instantAnswers: state.instantAnswers,
+          batchAnswers: state.batchAnswers,
+          batchSubmitted: state.batchSubmitted,
+        })
+      );
+    } catch (error) {
+      console.error("当前练习保存失败：", error);
+    }
+  }
+
+  function restorePracticeSession() {
+    try {
+      const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+      if (!raw) return false;
+
+      const saved = JSON.parse(raw);
+      const questionMap = new Map(questions.map((question) => [question.id, question]));
+      // 题库更新后只恢复仍然存在的题目，并把当前位置限制在有效范围内。
+      const roundQuestions = Array.isArray(saved.roundQuestionIds)
+        ? saved.roundQuestionIds.map((id) => questionMap.get(Number(id))).filter(Boolean)
+        : [];
+      if (!roundQuestions.length) {
+        clearPracticeSession();
+        return false;
+      }
+
+      const validIds = new Set(roundQuestions.map((question) => String(question.id)));
+      const normalizeAnswerMap = (input) =>
+        Object.fromEntries(
+          Object.entries(input || {})
+            .filter(([id, answer]) => validIds.has(String(id)) && normalizeAnswer(answer))
+            .map(([id, answer]) => [id, normalizeAnswer(answer)]),
+        );
+
+      state.roundQuestions = roundQuestions;
+      state.currentIndex = Math.min(Math.max(Number(saved.currentIndex) || 0, 0), roundQuestions.length - 1);
+      state.judgeMode = saved.judgeMode === "batch" ? "batch" : "instant";
+      state.draftAnswers = normalizeAnswerMap(saved.draftAnswers);
+      state.instantAnswers = normalizeAnswerMap(saved.instantAnswers);
+      state.batchAnswers = normalizeAnswerMap(saved.batchAnswers);
+      state.batchSubmitted =
+        state.judgeMode === "batch" &&
+        Boolean(saved.batchSubmitted) &&
+        roundQuestions.every((question) => state.batchAnswers[question.id]);
+      return true;
+    } catch (error) {
+      console.error("当前练习恢复失败，已清除损坏的会话：", error);
+      clearPracticeSession();
+      return false;
+    }
+  }
+
   function applyTheme(theme) {
     const normalizedTheme = theme === "github-dark" ? "github-dark" : "lab-light";
+    const themeAction = normalizedTheme === "github-dark" ? "切换到浅色主题" : "切换到 GitHub Dark";
     document.documentElement.dataset.theme = normalizedTheme;
     if (el.themeLabel) {
       el.themeLabel.textContent = normalizedTheme === "github-dark" ? "浅色实验室" : "GitHub Dark";
     }
+    el.themeToggleBtn.setAttribute("aria-label", themeAction);
+    el.themeToggleBtn.title = themeAction;
   }
 
   function toggleTheme() {
@@ -245,6 +332,8 @@
     state.judgeMode = el.judgeModeSelect.value;
     state.currentSubmitted = false;
     state.currentSelection = [];
+    state.draftAnswers = {};
+    state.instantAnswers = {};
     state.batchAnswers = {};
     state.batchSubmitted = false;
 
@@ -256,6 +345,7 @@
 
     renderQuestion();
     renderRoundStats();
+    savePracticeSession();
     setView("practice");
   }
 
@@ -264,8 +354,11 @@
     state.currentIndex = 0;
     state.currentSubmitted = false;
     state.currentSelection = [];
+    state.draftAnswers = {};
+    state.instantAnswers = {};
     state.batchAnswers = {};
     state.batchSubmitted = false;
+    clearPracticeSession();
     renderEmptyRound("当前练习已重置。");
     setView("practice");
   }
@@ -281,19 +374,34 @@
       return;
     }
 
-    state.currentSubmitted = false;
-    state.currentSelection = state.batchAnswers[question.id] ? state.batchAnswers[question.id].split("") : [];
+    const instantAnswer = state.instantAnswers[question.id] || "";
+    const batchAnswer = state.batchAnswers[question.id] || "";
+    const draftAnswer = state.draftAnswers[question.id] || "";
+    state.currentSubmitted = state.judgeMode === "instant" && Boolean(instantAnswer);
+    state.currentSelection = (state.judgeMode === "batch" ? batchAnswer : instantAnswer || draftAnswer).split("");
 
     el.questionPosition.textContent = `第 ${state.currentIndex + 1} / ${state.roundQuestions.length} 题 · 题库 ${question.id} 号`;
     el.questionType.textContent = question.type || "题目";
     el.questionTitle.textContent = question.question;
     el.resultBox.className = "result-box muted";
-    el.resultBox.textContent = state.judgeMode === "batch" ? "批量提交模式：本题作答后不会立即显示答案。" : "请选择答案。";
+    el.resultBox.textContent =
+      state.judgeMode === "batch"
+        ? batchAnswer
+          ? "本题答案已自动保存，提交本轮前不会显示正确答案。"
+          : "批量提交模式：选择答案后自动保存，提交本轮前不会显示正确答案。"
+        : "请选择答案。";
     el.explanationBox.style.display = "none";
     el.explanationBox.textContent = "";
 
     renderOptions(question);
+    if (state.judgeMode === "instant" && instantAnswer) {
+      renderAnswerResult(question, instantAnswer, instantAnswer === normalizeAnswer(question.answer));
+    } else if (state.judgeMode === "batch" && state.batchSubmitted && batchAnswer) {
+      renderAnswerResult(question, batchAnswer, batchAnswer === normalizeAnswer(question.answer));
+    }
     renderQuestionStats(question);
+    renderPracticeProgress();
+    renderRoundStats();
     updateQuestionButtons(question);
   }
 
@@ -317,7 +425,16 @@
 
       input.addEventListener("change", () => {
         updateSelectionFromInputs();
+        persistCurrentSelection();
         renderSelectedOptions();
+        if (state.judgeMode === "batch") {
+          el.resultBox.className = "result-box";
+          el.resultBox.textContent = state.currentSelection.length
+            ? "本题答案已自动保存，提交本轮前不会显示正确答案。"
+            : "本题尚未作答。";
+          renderPracticeProgress();
+          renderRoundStats();
+        }
         if (state.judgeMode === "instant" && !isMulti) {
           submitCurrentAnswer();
         }
@@ -345,6 +462,29 @@
       .sort();
   }
 
+  function persistCurrentSelection() {
+    const question = getCurrentQuestion();
+    if (!question || state.batchSubmitted) return;
+
+    const answer = normalizeAnswer(state.currentSelection.join(""));
+    if (state.judgeMode === "batch") {
+      // 批量模式选择即保存，用户前后切题或刷新页面都不会丢失草稿。
+      if (answer) {
+        state.batchAnswers[question.id] = answer;
+      } else {
+        delete state.batchAnswers[question.id];
+      }
+      delete state.draftAnswers[question.id];
+    } else if (!state.currentSubmitted) {
+      if (answer) {
+        state.draftAnswers[question.id] = answer;
+      } else {
+        delete state.draftAnswers[question.id];
+      }
+    }
+    savePracticeSession();
+  }
+
   function renderSelectedOptions() {
     const selected = new Set(state.currentSelection);
     el.optionsBox.querySelectorAll(".option-item").forEach((item) => {
@@ -359,9 +499,11 @@
     const hasQuestion = Boolean(question);
 
     el.quickStartBtn.style.display = "none";
-    el.submitAnswerBtn.style.display = hasQuestion && (isBatch || isMulti) ? "" : "none";
-    el.submitAnswerBtn.textContent = isBatch ? "保存本题答案" : "提交本题";
-    el.submitAnswerBtn.disabled = !hasQuestion || state.batchSubmitted;
+    el.submitAnswerBtn.style.display = hasQuestion && !isBatch && isMulti ? "" : "none";
+    el.submitAnswerBtn.textContent = "提交本题";
+    el.submitAnswerBtn.disabled = !hasQuestion || state.currentSubmitted;
+    el.prevBtn.style.display = hasQuestion ? "" : "none";
+    el.prevBtn.disabled = !hasQuestion || state.currentIndex <= 0;
     el.nextBtn.style.display = hasQuestion ? "" : "none";
     el.nextBtn.textContent = state.currentIndex >= state.roundQuestions.length - 1 ? "已到最后一题" : "下一题";
     el.nextBtn.disabled = !hasQuestion || state.currentIndex >= state.roundQuestions.length - 1;
@@ -376,6 +518,7 @@
     if (!question) return;
 
     updateSelectionFromInputs();
+    persistCurrentSelection();
     const answer = normalizeAnswer(state.currentSelection.join(""));
     if (!answer) {
       alert("请先选择答案。");
@@ -386,6 +529,8 @@
       state.batchAnswers[question.id] = answer;
       el.resultBox.className = "result-box";
       el.resultBox.textContent = "本题答案已保存，批量提交前不会显示正确答案。";
+      savePracticeSession();
+      renderPracticeProgress();
       renderRoundStats();
       return;
     }
@@ -394,9 +539,15 @@
     const correct = answer === normalizeAnswer(question.answer);
     updateLearningRecord(question, answer, correct);
     state.currentSubmitted = true;
+    state.instantAnswers[question.id] = answer;
+    delete state.draftAnswers[question.id];
+    savePracticeSession();
     renderAnswerResult(question, answer, correct);
     renderQuestionStats(question);
+    renderPracticeProgress();
+    renderRoundStats();
     renderSummary();
+    updateQuestionButtons(question);
   }
 
   function updateLearningRecord(question, answer, correct) {
@@ -455,11 +606,21 @@
     });
   }
 
+  function goToQuestion(index) {
+    if (index < 0 || index >= state.roundQuestions.length || index === state.currentIndex) return;
+    updateSelectionFromInputs();
+    persistCurrentSelection();
+    state.currentIndex = index;
+    renderQuestion();
+    savePracticeSession();
+  }
+
+  function previousQuestion() {
+    goToQuestion(state.currentIndex - 1);
+  }
+
   function nextQuestion() {
-    if (state.currentIndex < state.roundQuestions.length - 1) {
-      state.currentIndex += 1;
-      renderQuestion();
-    }
+    goToQuestion(state.currentIndex + 1);
   }
 
   function submitRound() {
@@ -472,9 +633,7 @@
     const current = getCurrentQuestion();
     if (current) {
       updateSelectionFromInputs();
-      if (state.currentSelection.length) {
-        state.batchAnswers[current.id] = normalizeAnswer(state.currentSelection.join(""));
-      }
+      persistCurrentSelection();
     }
 
     const missing = state.roundQuestions.filter((question) => !state.batchAnswers[question.id]);
@@ -498,6 +657,7 @@
     });
 
     state.batchSubmitted = true;
+    savePracticeSession();
     renderBatchResult(correctCount, wrongItems);
     renderQuestionStats(getCurrentQuestion());
     renderSummary();
@@ -526,8 +686,22 @@
     const question = getCurrentQuestion();
     if (question) {
       const answer = state.batchAnswers[question.id];
-      renderAnswerResult(question, answer, answer === question.answer);
+      renderAnswerResult(question, answer, answer === normalizeAnswer(question.answer));
     }
+  }
+
+  function renderStoredBatchResult() {
+    const wrongItems = [];
+    let correctCount = 0;
+    state.roundQuestions.forEach((question) => {
+      const answer = normalizeAnswer(state.batchAnswers[question.id]);
+      if (answer === normalizeAnswer(question.answer)) {
+        correctCount += 1;
+      } else {
+        wrongItems.push({ question, answer });
+      }
+    });
+    renderBatchResult(correctCount, wrongItems);
   }
 
   function renderQuestionStats(question) {
@@ -579,6 +753,31 @@
     el.masteredCount.textContent = mastered;
   }
 
+  function getAnsweredCount() {
+    const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
+    return state.roundQuestions.reduce((count, question) => count + (answers[question.id] ? 1 : 0), 0);
+  }
+
+  function renderPracticeProgress() {
+    const total = state.roundQuestions.length;
+    if (!total) {
+      el.practiceProgress.hidden = true;
+      el.practiceProgressBar.style.width = "0%";
+      el.practiceProgressText.textContent = "已完成 0 / 0";
+      return;
+    }
+
+    const answered = getAnsweredCount();
+    const progress = Math.round((answered / total) * 100);
+    el.practiceProgress.hidden = false;
+    el.practiceProgress.setAttribute("role", "progressbar");
+    el.practiceProgress.setAttribute("aria-valuemin", "0");
+    el.practiceProgress.setAttribute("aria-valuemax", String(total));
+    el.practiceProgress.setAttribute("aria-valuenow", String(answered));
+    el.practiceProgressBar.style.width = `${progress}%`;
+    el.practiceProgressText.textContent = `已完成 ${answered} / ${total}`;
+  }
+
   function renderRoundStats() {
     if (!state.roundQuestions.length) {
       el.roundStats.className = "round-stats muted";
@@ -586,27 +785,37 @@
       return;
     }
 
-    const answered = Object.keys(state.batchAnswers).length;
+    const answered = getAnsweredCount();
     el.roundStats.className = "round-stats";
     el.roundStats.innerHTML = [
       `<strong>本轮题数：</strong>${state.roundQuestions.length}`,
       `<strong>当前进度：</strong>${state.currentIndex + 1} / ${state.roundQuestions.length}`,
-      state.judgeMode === "batch" ? `<strong>已保存答案：</strong>${answered}` : "<strong>模式：</strong>立即判题",
+      state.judgeMode === "batch"
+        ? `<strong>已保存答案：</strong>${answered}`
+        : `<strong>已完成题目：</strong>${answered}`,
+      `<strong>模式：</strong>${state.judgeMode === "batch" ? "批量提交" : "立即判题"}`,
     ].join("<br>");
   }
 
   function renderEmptyRound(message) {
+    if (!state.roundQuestions.length) {
+      clearPracticeSession();
+    }
     el.questionPosition.textContent = "未开始";
     el.questionType.textContent = "";
     el.questionTitle.textContent = message;
     el.optionsBox.innerHTML = "";
     el.resultBox.className = "result-box muted";
-    el.resultBox.textContent = message;
+    el.resultBox.textContent = questions.length
+      ? "默认练习：全部题目 · 10 题 · 顺序 · 立即判题。更多选项可在“设置与数据”中调整。"
+      : message;
     el.explanationBox.style.display = "none";
     el.quickStartBtn.style.display = questions.length ? "" : "none";
     el.submitAnswerBtn.style.display = "none";
+    el.prevBtn.style.display = "none";
     el.nextBtn.style.display = "none";
     el.submitRoundBtn.style.display = "none";
+    renderPracticeProgress();
     renderQuestionStats(null);
     renderRoundStats();
   }
@@ -663,8 +872,9 @@
         const data = JSON.parse(reader.result);
         state.records = normalizeRecords(data.records || data);
         saveRecords();
+        resetRound();
         renderSummary();
-        renderQuestionStats(getCurrentQuestion());
+        setView("settings");
         alert("学习记录导入完成。");
       } catch (error) {
         console.error("学习记录导入失败：", error);
@@ -681,9 +891,9 @@
     if (!confirmed) return;
     state.records = {};
     saveRecords();
+    resetRound();
     renderSummary();
-    renderQuestionStats(getCurrentQuestion());
-    renderRoundStats();
+    setView("settings");
   }
 
   function exportWrongList() {
@@ -713,6 +923,7 @@
     el.startBtn.addEventListener("click", startRound);
     el.resetRoundBtn.addEventListener("click", resetRound);
     el.submitAnswerBtn.addEventListener("click", submitCurrentAnswer);
+    el.prevBtn.addEventListener("click", previousQuestion);
     el.nextBtn.addEventListener("click", nextQuestion);
     el.submitRoundBtn.addEventListener("click", submitRound);
     el.starBtn.addEventListener("click", toggleStarred);
@@ -728,6 +939,14 @@
     bindEvents();
     renderSummary();
     setView("practice");
+    if (restorePracticeSession()) {
+      el.judgeModeSelect.value = state.judgeMode;
+      renderQuestion();
+      if (state.batchSubmitted) {
+        renderStoredBatchResult();
+      }
+      return;
+    }
     renderEmptyRound(questions.length ? "点击“开始练习”后开始刷题。" : "没有加载到题库，请先运行 node parser.js 生成 questions.js。");
   }
 

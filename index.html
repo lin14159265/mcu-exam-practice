@@ -14,7 +14,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260617-quickstart2">
+    <link rel="stylesheet" href="style.css?v=20260618-continuity1">
   </head>
   <body>
     <header class="app-header">
@@ -49,6 +49,13 @@
             </div>
           </div>
 
+          <div id="practiceProgress" class="practice-progress" hidden>
+            <div class="practice-progress-track" aria-hidden="true">
+              <div id="practiceProgressBar" class="practice-progress-bar"></div>
+            </div>
+            <span id="practiceProgressText">已完成 0 / 0</span>
+          </div>
+
           <article class="question-card">
             <div class="question-card-topline" aria-hidden="true"></div>
             <h2 id="questionTitle">点击“设置与数据”配置练习，或直接开始默认练习。</h2>
@@ -56,8 +63,9 @@
             <div id="resultBox" class="result-box muted">当前没有进行中的练习。</div>
             <div id="explanationBox" class="explanation-box"></div>
             <div class="button-row question-buttons">
-              <button id="quickStartBtn" class="primary" type="button">开始练习</button>
+              <button id="quickStartBtn" class="primary" type="button">开始默认练习</button>
               <button id="submitAnswerBtn" class="primary" type="button">提交本题</button>
+              <button id="prevBtn" type="button">上一题</button>
               <button id="nextBtn" type="button">下一题</button>
               <button id="submitRoundBtn" class="primary" type="button">提交本轮答案</button>
             </div>
@@ -173,7 +181,7 @@
       </section>
     </main>
 
-    <script src="questions.js?v=20260617-quickstart2"></script>
-    <script src="app.js?v=20260617-quickstart2"></script>
+    <script src="questions.js?v=20260618-continuity1"></script>
+    <script src="app.js?v=20260618-continuity1"></script>
   </body>
 </html>
