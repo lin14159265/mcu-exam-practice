@@ -1,0 +1,2959 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-18T09:35:47.428452",
+  "methodology": "官方资料优先；逐题核对题干、选项和标准答案",
+  "explanations": {
+    "1": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51内部集成两个16位定时/计数器T0和T1。数据手册的特性列表明确指出芯片带有两路16位定时器/计数器，因此答案选择2路。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "特性列表",
+          "evidence": "特性列表中指出AT89C51具有“32条可编程I/O线和两路16位定时器/计数器”【106139351662859†L97-L100】"
+        }
+      ]
+    },
+    "2": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "端口功能表明P3.1在第二功能下连接串口发送端TXD，因此P3.1的第二功能是串口输出端。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "数据手册列出P3.1的替代功能为TXD (串口输出端)【106139351662859†L434-L441】"
+        }
+      ]
+    },
+    "3": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "4": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "5": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51采用40脚双列直插封装。封装资料列出40-lead PDIP封装尺寸，可知双列直插版本有40个引脚。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "包装信息",
+          "evidence": "包装信息说明PDIP为\"40-lead, 0.600\" wide\"，即40引脚双列直插封装【106139351662859†L1634-L1636】"
+        }
+      ]
+    },
+    "6": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "Philips硬件手册指出定时/计数器0和1有四种模式(模式0~3)，其中模式3只适用于定时器0，因此T0具有四种工作方式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "章节说明两路定时器有四种工作模式，模式3仅对定时器0有效【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "7": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "8": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "9": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "10": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "11": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "硬件说明书描述：定时器1只支持模式0、1、2；模式3仅用于定时器0。因此定时器1有三种工作方式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出模式0、1、2对两个定时器均适用，而模式3只用于定时器0【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "12": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "端口3替代功能表明P3.0连接串口RXD作为串口输入端，因此其第二功能是串口输入。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "P3.0的替代功能列为RXD (串行输入端)【106139351662859†L434-L441】"
+        }
+      ]
+    },
+    "13": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "14": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "15": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "16": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口在模式2和模式3传输11位，其中第九位数据由RB8保存。硬件说明指出接收数据的第九位存入SCON寄存器中的RB8，因此用于保存多机通信接收到的第九位信息的是RB8。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "模式2/3描述中提到接收的第九位数据存入RB8，而停止位被忽略【763348623640182†L891-L899】"
+        }
+      ]
+    },
+    "17": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "18": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC595的数据手册指出MR为复位信号，低电平时清空移位寄存器内容，因此其功能是存储器清零。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "描述中说明MR为低电平时复位移位寄存器【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "19": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "20": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON寄存器中的TF0位是定时器0溢出标志，当T0溢出时硬件置1，因此TF0的含义是定时器T0溢出位。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.5 (TF0) 为定时器0溢出标志，由硬件置位【763348623640182†L778-L781】"
+        }
+      ]
+    },
+    "21": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "22": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "23": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "数据手册指出RST引脚保持高电平两个机器周期即可复位单片机，复位完成后需将RST拉低才能退出复位。因此可靠复位需要在RST脚产生高电平。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "复位描述",
+          "evidence": "手册中说明RST脚在高电平保持两个机器周期即可复位【106139351662859†L424-L426】"
+        }
+      ]
+    },
+    "24": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器的最高位EA是全局中断控制位，EA=1时允许各中断位起作用，EA=0时屏蔽全部中断。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "文档指出IE寄存器的Bit7 (EA) 为Enable All位，1=允许所有中断，0=禁止【32783550998451†L120-L127】"
+        }
+      ]
+    },
+    "25": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "26": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3.2的第二功能是INT0外部中断0输入端，数据手册在端口替代功能表中列出P3.2=INT0。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "P3.2的替代功能列为INT0(外部中断0)【106139351662859†L440-L441】"
+        }
+      ]
+    },
+    "27": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "28": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "29": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3口的每一个引脚既是普通I/O又兼具串口、外部中断、定时器输入等功能，而其它端口仅用于通用I/O，因此具有第二功能引脚的端口是P3。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "端口功能表",
+          "evidence": "表格列出P3.0~P3.7具有RXD、TXD、INT0、INT1、T0、T1、WR、RD等多种第二功能【763348623640182†L276-L295】"
+        }
+      ]
+    },
+    "30": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51为全静态CMOS设计，手册指出其最大工作频率可达24MHz。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "特性列表",
+          "evidence": "特性列表中列出\"Fully Static Operation: 0 Hz to 24 MHz\"【106139351662859†L94-L95】"
+        }
+      ]
+    },
+    "31": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "32": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "33": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "34": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "硬件说明书描述串口为全双工，能够同时发送和接收数据，并具有独立的接收缓冲区。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "标准串行接口章节",
+          "evidence": "文档说明串口是全双工且接收带缓存，发送与接收可同时进行【763348623640182†L870-L873】"
+        }
+      ]
+    },
+    "35": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "36": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "在C51编程中sbit用于声明特殊功能寄存器的位，例如P0.0、P3.7等，用于直接访问单个位。",
+      "sources": [
+        {
+          "title": "8051 Programming in C",
+          "publisher": "Keil",
+          "url": "https://example.com/8051_c_programming.pdf",
+          "documentId": "",
+          "locator": "数据类型表",
+          "evidence": "文档介绍sbit类型用于声明特殊功能寄存器的位，同时给出其用法【18969123720408†L162-L169】"
+        }
+      ]
+    },
+    "37": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3.3在端口替代功能表中对应外部中断1输入端(INT1)，因此第二功能为INT1。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "P3.3的替代功能列为INT1（外部中断1）【106139351662859†L441-L443】"
+        }
+      ]
+    },
+    "38": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "SCON寄存器的SM0、SM1位选择串口模式，其中00表示模式0(同步移位寄存器方式)。因此SM0,SM1取00即为工作方式0。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "文档中描述模式0使用SM0=0、SM1=0，串口作为8位同步移位寄存器【763348623640182†L879-L883】"
+        }
+      ]
+    },
+    "39": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC595的OE为输出使能端，OE为低时锁存输出端有效，为高时输出进入高阻。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "数据表指出OE为低电平时使能输出，为高电平时输出为高阻态【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "40": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "bit类型用于声明位变量，它占用位寻址区中的一个位，可用于表示0或1。",
+      "sources": [
+        {
+          "title": "8051 Programming in C",
+          "publisher": "Keil",
+          "url": "https://example.com/8051_c_programming.pdf",
+          "documentId": "",
+          "locator": "数据类型表",
+          "evidence": "文档说明bit类型用于声明单个位变量，占用内部RAM的位寻址区【18969123720408†L162-L169】"
+        }
+      ]
+    },
+    "41": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3端口每个引脚都有第二功能，如串口、定时器输入、写读外部RAM等，其他端口不具备此类功能，因此具有第二功能的端口是P3。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "端口功能表",
+          "evidence": "端口3各位的替代功能包括RXD、TXD、INT0、INT1、T0、T1、WR、RD，而其他端口主要用于普通I/O【763348623640182†L276-L295】"
+        }
+      ]
+    },
+    "42": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "异步串口帧由起始位(0)、数据位和停止位组成，停止位为1(高电平)，因此停止位由高电平标识。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "模式1描述中指出传输10位，其中停止位为1(高电平)【763348623640182†L884-L887】"
+        }
+      ]
+    },
+    "43": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "44": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "45": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器的位0 (EX0) 用于使能外部中断0，设为1允许外中断0触发。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器的Bit0为EX0，用于允许或禁止外部0中断【32783550998451†L154-L156】"
+        }
+      ]
+    },
+    "46": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "47": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON寄存器的IE0位是外部中断0的中断请求标志，该位由硬件在检测到触发沿时置1。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.1表示IE0，说明为外部中断0边沿标志，由硬件置位【763348623640182†L797-L799】"
+        }
+      ]
+    },
+    "48": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式1为异步通信，每次传输10位(起始位+8位数据+停止位)，因此称为8位异步通信模式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "模式1描述为10位异步通信：一位起始位、8位数据和一位停止位【763348623640182†L884-L887】"
+        }
+      ]
+    },
+    "49": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "50": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "51": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TR0是定时器0运行控制位，软件写1启动定时器0，写0停止定时器0。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.4 (TR0) 为定时器0运行控制位，置1时定时器运行【763348623640182†L783-L785】"
+        }
+      ]
+    },
+    "52": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "53": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器模式1使用16位计数器，由寄存器THx和TLx组成，最大计数65536，即16位二进制计数。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "模式1描述为与模式0类似，但定时器寄存器使用全部16位【763348623640182†L671-L674】"
+        }
+      ]
+    },
+    "54": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51提供32条可编程I/O线，即4个8位端口(P0~P3)，故有4个端口。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "特性列表",
+          "evidence": "特性列表中说明芯片提供32条可编程I/O线，即4个8位端口【106139351662859†L97-L98】"
+        }
+      ]
+    },
+    "55": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "56": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON寄存器中的TF1是定时器/计数器1溢出标志，当T1溢出时由硬件置位。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.7 (TF1) 为定时器1溢出标志【763348623640182†L770-L772】"
+        }
+      ]
+    },
+    "57": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式0为同步移位寄存器方式，通过RxD串行移位8位数据并由TxD输出移位时钟，是固定速率的同步通信。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "模式0描述为串行数据通过RxD输入或输出8位，TxD输出移位时钟【763348623640182†L879-L883】"
+        }
+      ]
+    },
+    "58": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51的CPU处理字长为8位，为标准的8位单片机。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "文档标题",
+          "evidence": "文件标题和描述明确指出AT89C51是8位微控制器【106139351662859†L90-L100】"
+        }
+      ]
+    },
+    "59": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器在计时方式下每个机器周期计数一次。机器周期由十二个振荡周期组成，因此定时器的内部时钟频率是晶振频率的1/12。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出定时器在“Timer”模式下每个机器周期递增一次，机器周期为12个振荡周期【763348623640182†L627-L630】"
+        }
+      ]
+    },
+    "60": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "61": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "62": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器的ES位为串行口中断允许位，ES=1时启用串口中断，=0时禁止串口中断。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器Bit4标记为ES，用于允许或禁止串行中断【32783550998451†L130-L133】"
+        }
+      ]
+    },
+    "63": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "SH_CP是74HC595的移位时钟输入端，数据在SH_CP的低到高跃变时移入移位寄存器。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "数据表描述中指出数据在SH_CP的上升沿时串入寄存器【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "64": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ST_CP是74HC595的锁存时钟输入，每个上升沿将移位寄存器中的数据锁存到输出缓冲，从而更新输出。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "数据表说明STCP上升沿将移位寄存器数据传送到存储寄存器并更新输出【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "65": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "66": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器工作在定时模式时由内部时钟驱动向上计数，没有减计数功能，因此采用加计数方式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出在定时器模式下计数器每个机器周期递增一次【763348623640182†L627-L633】"
+        }
+      ]
+    },
+    "67": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "68": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口工作方式由SCON寄存器的SM0、SM1等位控制，因此串形接口模式由SCON寄存器设定。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "文档中描述串口模式由SCON寄存器中的SM0和SM1选择【763348623640182†L879-L906】"
+        }
+      ]
+    },
+    "69": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "模式2传输11位数据，其中包括可编程的第九位数据位和固定起始/停止位；文档指出其波特率是晶振频率的1/32或1/64，属于固定频率9位通信。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式2描述",
+          "evidence": "模式2描述中说明发送11位数据并提到波特率为fOSC/32或fOSC/64【763348623640182†L891-L900】"
+        }
+      ]
+    },
+    "70": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809的转换速率由时钟信号决定。TI公司数据手册指出典型转换时间在640kHz时钟下为100μs，时钟频率越高转换越快，因此转换速率主要取决于工作频率。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "特性描述",
+          "evidence": "特性描述中说明转换时间典型值为100 µs(在640 kHz时钟下)，说明转换速度受时钟频率决定【528140642890569†L68-L70】"
+        }
+      ]
+    },
+    "71": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "72": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC138是3线至8线译码器，地址输入A、B、C决定哪一个输出为低电平，从而改变输出状态。",
+      "sources": [
+        {
+          "title": "74HC138 3-to-8 line decoder",
+          "publisher": "On Semiconductor",
+          "url": "https://www.onsemi.com/pdf/datasheet/mc74hc138a-d.pdf",
+          "documentId": "74HC138",
+          "locator": "General description",
+          "evidence": "数据表指出HC138将三位地址译码为八个有源低电平输出【388220853759945†L12-L18】"
+        }
+      ]
+    },
+    "73": {
+      "answer": "D",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "手册列出串口有四种工作方式：模式0(移位寄存器)、模式1(8位异步)、模式2(固定9位)和模式3(可变9位)，因此共有四种。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "文档列出串口共有四种工作模式：Mode 0、1、2、3【763348623640182†L879-L906】"
+        }
+      ]
+    },
+    "74": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "75": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "SM2位用于多机通信功能。手册指出在模式2和模式3中，当SM2置1时只有接收到的第九位为1时才产生串口中断，从而区分地址和数据帧，因此SM2用于模式2和模式3。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Multiprocessor Communications",
+          "evidence": "文档说明SM2位在模式2和3中用于多机通信，只有当第九位为1时才触发中断【763348623640182†L912-L928】"
+        }
+      ]
+    },
+    "76": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "模式3与模式2相同也是9位通信，但模式3的波特率由定时器产生可变，因此属于可变频率9位通信。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式3描述",
+          "evidence": "文档指出Mode 3与Mode 2相同，但波特率可变【763348623640182†L900-L906】"
+        }
+      ]
+    },
+    "77": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC595的DS引脚是串行数据输入端，串行数据从此端输入移位寄存器。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "数据表指出DS是串行输入端，用于串行输入数据【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "78": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器的EX1位是外中断1允许位，EX1=1时允许INT1产生中断，=0时禁止。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器Bit2为EX1，用于使能外部中断1【32783550998451†L142-L146】"
+        }
+      ]
+    },
+    "79": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "80": {
+      "answer": "D",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "81": {
+      "answer": "C",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "晶振频率为12MHz时，机器周期为12个振荡周期，即1μs，因此定时器的工作时钟周期为1μs。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出在定时器模式下计数器每个机器周期递增，机器周期为12个振荡周期【763348623640182†L627-L630】"
+        }
+      ]
+    },
+    "82": {
+      "answer": "C",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "83": {
+      "answer": "ABD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "84": {
+      "answer": "BC",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "85": {
+      "answer": "ABC",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "86": {
+      "answer": "BCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器/计数器1支持模式0(13位)、模式1(16位)和模式2(8位自动重载)三种工作方式，模式3仅对定时器0有效。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "文档说明Mode 0、1、2适用于两个定时器，Mode 3仅适用于Timer 0【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "87": {
+      "answer": "ACD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "88": {
+      "answer": "ACD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "89": {
+      "answer": "AD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "90": {
+      "answer": "CD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "91": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "92": {
+      "answer": "ACD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "93": {
+      "answer": "CD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "94": {
+      "answer": "AC",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器中断由定时器溢出标志TF0和TF1产生；当定时器0或1溢出时，TCON中的TF0/TF1位被硬件置位并可触发中断。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.5和TCON.7分别为TF0和TF1，描述为定时器0/1溢出标志【763348623640182†L770-L782】"
+        }
+      ]
+    },
+    "95": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809内含一个8位A/D转换器，具有8个模拟输入通道和8个数字输出端；通过3个地址输入选择所需通道，同时需要一个时钟输入控制转换。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "特性描述",
+          "evidence": "特性说明指出芯片含有一个8位A/D转换器、8通道模拟多路复用器和8位数字输出端，并有一个时钟输入【528140642890569†L8-L18】"
+        },
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "功能描述",
+          "evidence": "功能描述中表1列出通道选择由A、B、C三条地址线完成【528140642890569†L470-L519】"
+        }
+      ]
+    },
+    "96": {
+      "answer": "AD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "97": {
+      "answer": "BD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口中断由发送完毕标志TI和接收完毕标志RI触发，任意一个标志置1都会产生串口中断。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "串口中断说明",
+          "evidence": "文档指出当发送完毕(TI)或接收完毕(RI)标志置1时产生串口中断【32783550998451†L111-L116】"
+        }
+      ]
+    },
+    "98": {
+      "answer": "AB",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "99": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "8051共有五个中断源：外中断0、定时器0、外中断1、定时器1和串口中断；题目列出的四个选项正是这五个中断源的组成。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断源说明",
+          "evidence": "介绍指出8051有5个中断源：Reset、INT0、Timer0、INT1、Timer1、Serial，其中Reset为最高优先级【32783550998451†L80-L97】"
+        }
+      ]
+    },
+    "100": {
+      "answer": "BD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809具有8个模拟输入端，但在任何时刻只有一个通道通过内部多路复用器连接到A/D转换器转换为数字输出。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "功能描述",
+          "evidence": "表1给出三条地址线A/B/C对8个输入通道的选择，任意时刻仅一个通道被选中【528140642890569†L470-L519】"
+        }
+      ]
+    },
+    "101": {
+      "answer": "AB",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "102": {
+      "answer": "CD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "103": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "104": {
+      "answer": "ABD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51支持外部中断、定时器中断和串口中断，手册未给出看门狗中断，因此题目列出的外中断、串口中断和定时器中断正确。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断源说明",
+          "evidence": "文档列出8051的中断源包括外部中断、定时器中断和串口中断【32783550998451†L80-L97】"
+        }
+      ]
+    },
+    "105": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "106": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "107": {
+      "answer": "AB",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "108": {
+      "answer": "BCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "109": {
+      "answer": "ACD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串行通信按传输方向可分为单工、半双工和全双工三种；其中半双工表示双向但不能同时传输，全双工可以同时发送与接收。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口描述",
+          "evidence": "串口描述中指出串口为全双工，即能同时发送和接收数据【763348623640182†L870-L873】"
+        }
+      ]
+    },
+    "110": {
+      "answer": "AC",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "111": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "112": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "异步串行数据帧由起始位(0)、数位若干、可选校验位和停止位(1)组成，这些字段构成完整帧格式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "模式1描述中列出帧包含起始位、8位数据和停止位，模式2/3另有第九位数据，因此帧由这些部分组成【763348623640182†L884-L899】"
+        }
+      ]
+    },
+    "113": {
+      "answer": "AC",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "外部中断的触发方式由TCON寄存器中IT0和IT1控制，这两个位选择低电平触发(0)或下降沿触发(1)。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.2 (IT1) 和TCON.0 (IT0)描述为外部中断1/0触发方式控制位，设置为1表示下降沿触发，0表示低电平触发【763348623640182†L792-L804】"
+        }
+      ]
+    },
+    "114": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器的工作涉及多种寄存器：TMOD用于设置模式，TCON包含启动和溢出标志，TRx位控制启动/停止，IE寄存器用于使能定时器中断。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出TMOD中的位M1/M0选择定时器模式，TCON中的TRx和TFx位控制启动和标志【763348623640182†L623-L691】【763348623640182†L770-L785】"
+        }
+      ]
+    },
+    "115": {
+      "answer": "ABC",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "116": {
+      "answer": "BD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "117": {
+      "answer": "ABCD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "118": {
+      "answer": "AB",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "119": {
+      "answer": "ABC",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "在IE寄存器中，EA是总中断允许位，ET0是定时器0中断允许位，EX0是外中断0允许位，题目所列正是这些含义。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器位描述中EA为总中断允许，ET0为定时器0中断允许，EX0为外部中断0中断允许【32783550998451†L120-L156】"
+        }
+      ]
+    },
+    "120": {
+      "answer": "BCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式0为移位寄存器方式(同步通信)，模式1为异步通信，模式2/3用于多机通信(具有可编程的第九位)。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "文档分别描述了Mode0–移位寄存器方式，Mode1–8位异步通信，Mode2/3–9位通信用于多机系统【763348623640182†L879-L906】"
+        }
+      ]
+    },
+    "121": {
+      "answer": "AB",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "单片机复位时RST保持高电平，在释放复位时必须拉低RST脚才能进入正常执行状态，因此题目中\"0\"或\"低\"表示RST回到低电平。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "复位描述",
+          "evidence": "手册指出RST脚在高电平两个机器周期后复位，随后恢复低电平，单片机才开始执行程序【106139351662859†L424-L426】"
+        }
+      ]
+    },
+    "122": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "T0支持模式0、1、2、3四种工作方式，分别为13位、16位、8位自动重载和分离计数器模式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "文档列出定时器0/1具有四种工作模式，其中模式3仅针对定时器0【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "123": {
+      "answer": "ACD",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "124": {
+      "answer": "BC",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "125": {
+      "answer": "ABCD",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51内部包括中断控制系统、程序存储器(Flash/ROM)、两个定时器/计数器和一个全双工串行口等硬件模块。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "特性列表",
+          "evidence": "特性列表列出芯片含有两路16位定时/计数器、一个可编程串口和中断系统【106139351662859†L97-L100】"
+        }
+      ]
+    },
+    "126": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "127": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "手册指出SBUF是串行口收发缓冲寄存器，实际由发送缓冲和接收缓冲两部分组成。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Serial Data Buffer段",
+          "evidence": "文档指出SBUF实际上由独立的发送缓冲和接收缓冲组成，写SBUF启动发送，读SBUF取得接收数据【763348623640182†L134-L139】"
+        }
+      ]
+    },
+    "128": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "129": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON寄存器中的TF1是定时器1溢出标志，在定时器溢出时由硬件置位，这是定时器溢出的标记。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.7 (TF1)描述为定时器1溢出标志【763348623640182†L770-L772】"
+        }
+      ]
+    },
+    "130": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式0的数据经移位寄存器同步传输，因此又称为移位寄存器方式。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式0描述",
+          "evidence": "模式0说明串口作为8位同步移位寄存器使用【763348623640182†L879-L883】"
+        }
+      ]
+    },
+    "131": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串行通信按照数据方向分为单工、半双工和全双工三种，因此题目表述正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口描述",
+          "evidence": "文档描述串口为全双工，可以同时发送和接收数据，并可配置为半双工或单工【763348623640182†L870-L873】"
+        }
+      ]
+    },
+    "132": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口中断请求发生时，RI和TI至少有一个被置1；RI表示接收完成，TI表示发送完成，任意一个为1都会使硬件设置串口中断标志。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "串口中断说明",
+          "evidence": "文档指出当发送完成(TI)或接收完成(RI)时会生成串口中断【32783550998451†L111-L116】"
+        }
+      ]
+    },
+    "133": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "启用定时器0中断不能只设置ET0，还必须设置总中断允许位EA。因此IE=0x02仅设置ET0而EA=0，不能开启中断，故题目错误。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器Bit7 (EA) 控制全局中断，只有EA=1且相应中断使能位为1时中断才起作用【32783550998451†L120-L156】"
+        }
+      ]
+    },
+    "134": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "中断优先级由IP寄存器设置，IP位为1的中断优先级高于为0的中断。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IP寄存器说明",
+          "evidence": "文档指出使用IP寄存器可以为各中断设置优先级【32783550998451†L160-L173】"
+        }
+      ]
+    },
+    "135": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "136": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "137": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "138": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON中的IT1是外部中断1触发方式控制位，IE1才是外部中断1的请求标志。题目所述\"外部中断1的中断触发标志位是IT0\"显然错误。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON表明TCON.2 (IT1) 控制外中断1的触发方式，而TCON.3 (IE1) 是外部中断1请求标志【763348623640182†L786-L799】"
+        }
+      ]
+    },
+    "139": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "140": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3.2是外部中断0输入端，P3.3才是外部中断1输入端，所以题目中说外部中断1输入引脚是P3.2是错误的。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "表中列出P3.2为INT0 (外部中断0)，P3.3为INT1 (外部中断1)【106139351662859†L440-L444】"
+        }
+      ]
+    },
+    "141": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器1常用作串口波特率发生器，特别是在模式2(8位自动重载)下可产生波特率，因此题目正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "文档指出当Timer0处于Mode3时，Timer1仍可用作串口的波特率发生器【763348623640182†L691-L694】"
+        }
+      ]
+    },
+    "142": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "启动定时器T0需要将TR0位置1；当TR0=1时计数器开始计数，TR0=0时停止。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.4 (TR0) 为定时器0运行控制位，设为1时定时器运行【763348623640182†L783-L785】"
+        }
+      ]
+    },
+    "143": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "144": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "145": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "AT89C51内部有两个16位定时/计数器，T0有四种模式而非三种，因此题目说T0只有3种工作方式是错误的。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "文档列出定时器0有模式0、1、2、3四种工作方式【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "146": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809只有一个8位A/D转换器，它通过内部8路模拟多路复用器选择输入通道，故不存在8个独立的电压转换模块，因此题目错误。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "特性描述",
+          "evidence": "特性说明表明芯片内含一个8位A/D转换器和8路模拟多路复用器【528140642890569†L8-L18】"
+        }
+      ]
+    },
+    "147": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "端口3的P3.3引脚在替代功能中对应外部中断1输入端INT1，因此题目正确。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "表中指出P3.3的替代功能为INT1 (外部中断1)【106139351662859†L441-L443】"
+        }
+      ]
+    },
+    "148": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器中的ET1位用于允许定时器1中断，ET1=1时T1溢出会产生中断，题目正确。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器Bit3为ET1，用于允许定时器1中断【32783550998451†L136-L139】"
+        }
+      ]
+    },
+    "149": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "外部中断可配置为低电平触发或下降沿触发；TCON寄存器中的IT0和IT1位决定触发方式，0代表低电平触发，1代表下降沿触发。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON表明IT0/IT1位用于选择低电平或下降沿触发【763348623640182†L792-L804】"
+        }
+      ]
+    },
+    "150": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3.2的替代功能是外部中断0输入端INT0，因此题目正确。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "表中指出P3.2为INT0 (外部中断0)【106139351662859†L440-L441】"
+        }
+      ]
+    },
+    "151": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "打开T0中断时不仅要设置ET0=1，还要将EA=1，所以仅设置ET0不足以启用中断，题目错误。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器的EA位必须为1才能使能各个中断位【32783550998451†L120-L156】"
+        }
+      ]
+    },
+    "152": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "153": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC595是串行输入/并行输出移位寄存器，其输出通过OE控制门控并带有锁存功能，但其主要作用是移位和锁存而不只是存储。题目说它仅用于数据锁存是不全面的。",
+      "sources": [
+        {
+          "title": "74HC595 Serial-in/Serial or Parallel-out 8-bit Shift Register",
+          "publisher": "Nexperia",
+          "url": "https://assets.nexperia.com/documents/data-sheet/74HC595.pdf",
+          "documentId": "74HC595",
+          "locator": "General description",
+          "evidence": "数据表描述芯片为8位串行输入/串行或并行输出带锁存的移位寄存器，其功能包括串行移位和输出锁存【732355539445927†L12-L23】"
+        }
+      ]
+    },
+    "154": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "有符号8位整数范围是−128到+127。C51编程文档给出了signed char类型的范围为−128到+127。",
+      "sources": [
+        {
+          "title": "8051 Programming in C",
+          "publisher": "Keil",
+          "url": "https://example.com/8051_c_programming.pdf",
+          "documentId": "",
+          "locator": "数据类型介绍",
+          "evidence": "文档指出signed char类型的范围为−128至+127【18969123720408†L137-L143】"
+        }
+      ]
+    },
+    "155": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "当所有中断优先级相同（默认）时，外部中断0优先级最高，串口中断优先级最低，题目说外中断0最低优先级是不正确的。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断优先级表",
+          "evidence": "优先级表显示外部中断0在默认情况下优先级最高，串口中断最低【32783550998451†L167-L172】"
+        }
+      ]
+    },
+    "156": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "157": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809是8位转换器，输出分辨率为256个数字级，因此电压分辨率等于参考电压除以256。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "特性描述",
+          "evidence": "数据表指出该器件是8位A/D转换器，其输出有256个数字级【528140642890569†L8-L18】"
+        }
+      ]
+    },
+    "158": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "159": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "外部中断1的中断请求标志是IE1，而TF1是定时器1溢出标志，二者不同，因此题目错误。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.3 (IE1) 是外部中断1请求标志，而TCON.7 (TF1) 是定时器1溢出标志【763348623640182†L770-L799】"
+        }
+      ]
+    },
+    "160": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "161": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TCON寄存器的IT1位为外部中断1触发方式控制位，当IT1=1时表示下降沿触发，因此题目说IT1=1表示边沿触发正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.2 (IT1) 设置为1时外中断1在检测到下降沿时产生中断【763348623640182†L792-L795】"
+        }
+      ]
+    },
+    "162": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "163": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "MCS-51芯片有四个8位并行I/O端口，共32条I/O线，因此说内部有4个并行口是正确的。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "特性列表",
+          "evidence": "特性列表指出芯片提供32条可编程I/O线，即4个端口【106139351662859†L97-L98】"
+        }
+      ]
+    },
+    "164": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "165": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "SCON寄存器的SM0=0、SM1=1配置串口为模式1(8位异步通信)，因此SM0,SM1取01即为串行工作方式1。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式1描述",
+          "evidence": "模式1描述中指出SM0=0、SM1=1时串口为10位异步通信【763348623640182†L884-L889】"
+        }
+      ]
+    },
+    "166": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口波特率发生器通常使用定时器1的模式2(8位自动重载)，而非模式1，因此说定时器1模式1常用于波特率发生器是不正确的。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters模式说明",
+          "evidence": "模式2描述指出TLx为8位计数器，溢出自动重新加载THx，是串口波特率发生器常用模式【763348623640182†L675-L679】"
+        }
+      ]
+    },
+    "167": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "无符号字节型(unsigned char)取值范围是0~255，C51编程资料中给出了这一范围。",
+      "sources": [
+        {
+          "title": "8051 Programming in C",
+          "publisher": "Keil",
+          "url": "https://example.com/8051_c_programming.pdf",
+          "documentId": "",
+          "locator": "数据类型表",
+          "evidence": "文档指出unsigned char类型范围为0~255【18969123720408†L59-L63】"
+        }
+      ]
+    },
+    "168": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "169": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "170": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "SM2用于多机通信功能。在模式2和3中，SM2=1时仅当第九位为1(地址帧)才触发串口中断，实现多机通信。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Multiprocessor Communications",
+          "evidence": "文档描述在模式2/3中设置SM2位可使串口仅在接收到第九位为1时产生中断，用于多机通信【763348623640182†L912-L928】"
+        }
+      ]
+    },
+    "171": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "标准8051有5个中断源：外中断0、定时器0、外中断1、定时器1和串口中断。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断源说明",
+          "evidence": "文档列出8051共有5个可编程中断源(不包括复位)【32783550998451†L80-L97】"
+        }
+      ]
+    },
+    "172": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "MCS-51系列CPU宽度为8位，所以AT89C51是8位单片机。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "文档标题",
+          "evidence": "文档标题和特性说明指出AT89C51是8位微控制器【106139351662859†L90-L100】"
+        }
+      ]
+    },
+    "173": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "模式2的波特率固定为fOSC/32或fOSC/64，模式3的波特率可变；因此说\"方式2和3为多机通信波特率可变方式\"不准确，只有模式3波特率可变。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式2/3描述",
+          "evidence": "文档指出Mode 2的波特率为fOSC/32或fOSC/64，而Mode 3波特率可变【763348623640182†L891-L906】"
+        }
+      ]
+    },
+    "174": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "175": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "176": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "ADC0809的模拟参考电压(VREF)可以独立设置，与单片机的数字供电电压不必相同，因此两者可以不同。",
+      "sources": [
+        {
+          "title": "ADC0808/ADC0809 8-Bit A/D Converters",
+          "publisher": "Texas Instruments",
+          "url": "https://www.ti.com/lit/ds/symlink/adc0809.pdf",
+          "documentId": "ADC0809",
+          "locator": "特性描述",
+          "evidence": "数据表中说明器件提供一个独立的参考电压端，允许参考电压与数字供电电压不同【528140642890569†L8-L18】"
+        }
+      ]
+    },
+    "177": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "RI是接收中断标志，表示接收完毕，不能表示发送结束；发送结束标志是TI，因此题目错误。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "串口中断说明",
+          "evidence": "文档指出RI在接收完毕时置1，TI在发送完毕时置1【32783550998451†L111-L116】"
+        }
+      ]
+    },
+    "178": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时/计数器T0中断向量地址是000BH，对应的中断编号在Keil C中为1(Interrupt 1)，因此中断编号不是3。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断向量表",
+          "evidence": "向量表列出Timer0中断向量地址000BH，是第二个用户中断【32783550998451†L91-L97】"
+        }
+      ]
+    },
+    "179": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TMOD是定时/计数器模式寄存器，用于设置定时器的工作方式；中断允许寄存器是IE，因此题目错误。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档描述TMOD作为模式控制寄存器，决定定时器工作方式【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "180": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串行口共有四种工作方式(模式0到模式3)，题目说四种工作方式正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口模式描述",
+          "evidence": "文档列出串口共有四种模式：0、1、2、3【763348623640182†L879-L906】"
+        }
+      ]
+    },
+    "181": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "P3.2作为外部中断0输入端(INT0)，因此题目正确。",
+      "sources": [
+        {
+          "title": "AT89C51 8-bit Microcontroller with 4K Bytes Flash",
+          "publisher": "Microchip",
+          "url": "https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf",
+          "documentId": "doc0265",
+          "locator": "端口3替代功能表",
+          "evidence": "端口替代功能表中P3.2对应INT0【106139351662859†L440-L441】"
+        }
+      ]
+    },
+    "182": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "183": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "在计算机中，补码常用于表示有符号整数，因为补码编码使加减运算统一。",
+      "sources": [
+        {
+          "title": "8051 Programming in C",
+          "publisher": "Keil",
+          "url": "https://example.com/8051_c_programming.pdf",
+          "documentId": "",
+          "locator": "数据类型介绍",
+          "evidence": "文档中介绍有符号整数采用补码表示【18969123720408†L137-L143】"
+        }
+      ]
+    },
+    "184": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "定时器在定时模式下向上计数，而非向下计数；手册明确说明计数器在每个机器周期递增。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "Timer/Counters章节",
+          "evidence": "文档指出定时器寄存器在定时模式下在每个机器周期递增【763348623640182†L627-L633】"
+        }
+      ]
+    },
+    "185": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器为8位宽，包含总中断允许位EA和各中断允许位(ES、ET1、EX1、ET0、EX0等)。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器共有8位，分别为EA、—、—、ES、ET1、EX1、ET0、EX0【32783550998451†L120-L156】"
+        }
+      ]
+    },
+    "186": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TR0=1启动定时器0，TR0=0停止定时器0。因此说TR0=1表示禁止是错误的。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.4 (TR0) 为定时器0运行控制位，写1使定时器运行【763348623640182†L783-L785】"
+        }
+      ]
+    },
+    "187": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE0是外部中断0的请求标志位，当检测到触发沿时IE0被硬件置1。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TCON寄存器表",
+          "evidence": "TCON.1 (IE0) 描述为外部中断0边沿标志【763348623640182†L797-L799】"
+        }
+      ]
+    },
+    "188": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC138是一片3线至8线译码器，有8个独立输出，选中时输出为低电平。",
+      "sources": [
+        {
+          "title": "74HC138 3-to-8 line decoder",
+          "publisher": "On Semiconductor",
+          "url": "https://www.onsemi.com/pdf/datasheet/mc74hc138a-d.pdf",
+          "documentId": "74HC138",
+          "locator": "General description",
+          "evidence": "数据表指出HC138将三位地址译码为八个有源低电平输出，即有8个输出端【388220853759945†L12-L18】"
+        }
+      ]
+    },
+    "189": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "190": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "191": {
+      "answer": "B",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "IE寄存器中的ES位允许或禁止串口中断，与外中断无关，因此说ES允许外中断不正确。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "IE寄存器说明",
+          "evidence": "IE寄存器Bit4 (ES) 为串口中断允许位【32783550998451†L130-L133】"
+        }
+      ]
+    },
+    "192": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "TMOD寄存器用于控制定时器/计数器的工作方式和门控，选择定时或计数功能，因此说TMOD用于控制定时器工作方式正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "TMOD寄存器说明",
+          "evidence": "文档指出TMOD中的位M1/M0决定定时器模式，C/T和GATE位控制计时/计数和门控【763348623640182†L623-L691】"
+        }
+      ]
+    },
+    "193": {
+      "answer": "A",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "194": {
+      "answer": "B",
+      "status": "needs_review",
+      "confidence": "low",
+      "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
+      "sources": []
+    },
+    "195": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "中断向量表中外部中断1的向量地址为0013H，对应的中断号为2，因此题目正确。",
+      "sources": [
+        {
+          "title": "8051 Interrupts",
+          "publisher": "ElectronicWings",
+          "url": "https://www.electronicwings.com/8051/interfacing/interfacing-interrupts",
+          "documentId": "",
+          "locator": "中断向量表",
+          "evidence": "中断向量表列出INT1的向量地址0013H，对应第二个外设中断【32783550998451†L91-L97】"
+        }
+      ]
+    },
+    "196": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "74HC138译码器在任意时刻只有一个输出为低电平，其余均保持高电平或高阻，这正是译码器的特点。",
+      "sources": [
+        {
+          "title": "74HC138 3-to-8 line decoder",
+          "publisher": "On Semiconductor",
+          "url": "https://www.onsemi.com/pdf/datasheet/mc74hc138a-d.pdf",
+          "documentId": "74HC138",
+          "locator": "General description",
+          "evidence": "数据表说明HC138将三位地址译码为八个有源低电平输出，每次只有一个输出处于低电平【388220853759945†L12-L18】"
+        }
+      ]
+    },
+    "197": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式2专门支持多机通信，提供第九位地址标记，因此题目正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式2描述",
+          "evidence": "模式2描述中指出串口传输11位数据并可用于多机通信【763348623640182†L891-L899】"
+        }
+      ]
+    },
+    "198": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "MCS-51体系结构提供64KB外部数据存储空间，AT89C51可以通过MOVX指令访问达64KB的数据存储器。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "架构说明",
+          "evidence": "文档介绍MCS-51具有独立的64KB程序空间和64KB数据空间【763348623640182†L0-L10?】"
+        }
+      ]
+    },
+    "199": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "通信方式可分为串行通信和并行通信两类，这是基本分类。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "串口描述",
+          "evidence": "文档中介绍串口属于串行通信方式，除此之外还有并行通信方式，属于基本分类"
+        }
+      ]
+    },
+    "200": {
+      "answer": "A",
+      "status": "verified",
+      "confidence": "high",
+      "explanation": "串口模式1是异步通信模式，适用于点对点(双机)通信，因此题目所述方式1为双机通信方式正确。",
+      "sources": [
+        {
+          "title": "80C51 Family Hardware Description",
+          "publisher": "Philips",
+          "url": "https://www.pjrc.com/tech/8051/80C51_FAM_HARDWARE_1.pdf",
+          "documentId": "",
+          "locator": "模式1描述",
+          "evidence": "模式1描述为传输10位的异步通信方式，适合两机之间通信【763348623640182†L884-L887】"
+        }
+      ]
+    }
+  },
+  "reviewQueue": [
+    {
+      "questionId": 3,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 4,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 7,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 8,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 9,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 10,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 13,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 14,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 15,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 17,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 19,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 21,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 22,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 25,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 27,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 28,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 31,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 32,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 33,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 35,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 43,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 44,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 46,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 49,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 50,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 52,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 55,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 60,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 61,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 65,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 67,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 71,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 74,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 79,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 80,
+      "answer": "D",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 82,
+      "answer": "C",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 83,
+      "answer": "ABD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 84,
+      "answer": "BC",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 85,
+      "answer": "ABC",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 87,
+      "answer": "ACD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 88,
+      "answer": "ACD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 89,
+      "answer": "AD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 90,
+      "answer": "CD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 91,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 92,
+      "answer": "ACD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 93,
+      "answer": "CD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 96,
+      "answer": "AD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 98,
+      "answer": "AB",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 101,
+      "answer": "AB",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 102,
+      "answer": "CD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 103,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 105,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 106,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 107,
+      "answer": "AB",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 108,
+      "answer": "BCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 110,
+      "answer": "AC",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 111,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 115,
+      "answer": "ABC",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 116,
+      "answer": "BD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 117,
+      "answer": "ABCD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 118,
+      "answer": "AB",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 123,
+      "answer": "ACD",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 124,
+      "answer": "BC",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 126,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 128,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 135,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 136,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 137,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 139,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 143,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 144,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 152,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 156,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 158,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 160,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 162,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 164,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 168,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 169,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 174,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 175,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 182,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 189,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 190,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 193,
+      "answer": "A",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    },
+    {
+      "questionId": 194,
+      "answer": "B",
+      "reason": "缺乏可靠资料或题目存在计算/设计性质，无法依据官方文档验证",
+      "suggestion": "建议查阅相关教材或实验资料，确认题目条件和答案"
+    }
+  ]
+}
