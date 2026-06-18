@@ -20,7 +20,7 @@
 - 纯前端：HTML + CSS + JavaScript。
 - 无后端、无数据库、无构建工具。
 - 数据持久化使用浏览器 `localStorage`。
-- 学习记录 key 为 `mcu_exam_practice_records_v1`；主题 key 为 `mcu_exam_practice_theme_v1`；当前轮次 key 为 `mcu_exam_practice_session_v1`。
+- 学习记录 key 为 `mcu_exam_practice_records_v1`；主题 key 为 `mcu_exam_practice_theme_v1`；当前轮次 key 为 `mcu_exam_practice_session_v1`；练习偏好 key 为 `mcu_exam_practice_preferences_v1`。
 - 题库生成依赖本机 Node.js 运行 `parser.js`。
 
 ## 关键入口
@@ -50,6 +50,7 @@ start-local.bat
 - 保持纯静态文件结构，不引入后端、数据库或前端框架，除非需求明确升级。
 - `questions.js` 是生成文件；题库内容应优先改 `questions.txt` 后重新生成。
 - 新增学习记录字段时，要兼容旧 `localStorage` 数据。
+- 导入学习数据时要兼容旧版仅包含 `records` 或直接记录对象的 JSON。
 - 修改当前轮次恢复逻辑时，要验证旧浏览器中不存在 session key、session 损坏和题库更新后三种情况均可正常降级。
 
 ## 关键风险点
@@ -66,5 +67,6 @@ start-local.bat
 - 修改练习导航后，验证上一题/下一题、批量答案自动保存和刷新恢复当前题。
 - 修改本轮结果逻辑后，验证立即判题与批量提交都能进入结果页，错题复查、重练错题和再练本轮均不重复累计旧答案。
 - 修改题目导航后，验证当前/未答/已答/答对/答错状态、随机题库原题号、完成态复查和 200 题手机滚动均正常。
+- 修改练习偏好或快捷键后，验证刷新恢复设置、设置页不误触、题目弹窗不误触及立即/批量两种模式。
 - 修改布局后，检查做题视图和设置与数据视图能正常切换，桌面和手机窄屏下题干、选项、按钮不重叠。
 - 修改主题后，检查浅色实验室和 GitHub Dark 两套配色下选中、正确、错误、禁用状态都清晰可读。

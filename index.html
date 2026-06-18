@@ -15,7 +15,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260618-navigator1">
+    <link rel="stylesheet" href="style.css?v=20260618-desktop1">
   </head>
   <body>
     <header class="app-header">
@@ -56,11 +56,11 @@
             </div>
             <div class="practice-progress-meta">
               <span id="practiceProgressText">已完成 0 / 0</span>
-              <button id="questionNavigatorBtn" class="navigator-trigger" type="button">题目导航</button>
+              <button id="questionNavigatorBtn" class="navigator-trigger" type="button" aria-keyshortcuts="G">题目导航</button>
             </div>
           </div>
 
-          <article id="questionCard" class="question-card">
+          <article id="questionCard" class="question-card" tabindex="-1">
             <div class="question-card-topline" aria-hidden="true"></div>
             <h2 id="questionTitle">点击“设置与数据”配置练习，或直接开始默认练习。</h2>
             <div id="optionsBox" class="options-box"></div>
@@ -68,16 +68,16 @@
             <div id="explanationBox" class="explanation-box"></div>
             <div class="button-row question-buttons">
               <button id="quickStartBtn" class="primary" type="button">开始默认练习</button>
-              <button id="submitAnswerBtn" class="primary" type="button">提交本题</button>
-              <button id="prevBtn" type="button">上一题</button>
-              <button id="nextBtn" type="button">下一题</button>
-              <button id="finishRoundBtn" class="primary" type="button">查看本轮结果</button>
-              <button id="submitRoundBtn" class="primary" type="button">提交本轮答案</button>
+              <button id="submitAnswerBtn" class="primary" type="button" aria-keyshortcuts="Enter">提交本题</button>
+              <button id="prevBtn" type="button" aria-keyshortcuts="ArrowLeft Shift+Enter">上一题</button>
+              <button id="nextBtn" type="button" aria-keyshortcuts="ArrowRight Enter">下一题</button>
+              <button id="finishRoundBtn" class="primary" type="button" aria-keyshortcuts="Enter">查看本轮结果</button>
+              <button id="submitRoundBtn" class="primary" type="button" aria-keyshortcuts="Control+Enter">提交本轮答案</button>
               <button id="viewRoundResultBtn" class="primary" type="button">返回本轮结果</button>
             </div>
           </article>
 
-          <section id="roundCompletePanel" class="round-complete-panel" aria-labelledby="roundCompleteTitle" hidden>
+          <section id="roundCompletePanel" class="round-complete-panel" aria-labelledby="roundCompleteTitle" tabindex="-1" hidden>
             <header class="round-complete-header">
               <h2 id="roundCompleteTitle">本轮完成</h2>
               <p id="roundResultMessage">本轮结果已生成。</p>
@@ -176,9 +176,9 @@
                 <span aria-hidden="true">↧</span>
                 <h2>数据管理</h2>
               </div>
-              <button id="exportRecordsBtn" type="button">导出学习记录</button>
+              <button id="exportRecordsBtn" type="button">导出学习数据</button>
               <label class="file-button">
-                导入学习记录
+                导入学习数据
                 <input id="importRecordsInput" type="file" accept="application/json,.json">
               </label>
               <button id="exportWrongBtn" type="button">导出错题列表</button>
@@ -235,7 +235,7 @@
       <div id="questionNavigatorGrid" class="question-navigator-grid" aria-label="本轮题号"></div>
     </dialog>
 
-    <script src="questions.js?v=20260618-navigator1"></script>
-    <script src="app.js?v=20260618-navigator1"></script>
+    <script src="questions.js?v=20260618-desktop1"></script>
+    <script src="app.js?v=20260618-desktop1"></script>
   </body>
 </html>

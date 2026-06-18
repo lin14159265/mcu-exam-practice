@@ -4,6 +4,20 @@
   const STORAGE_KEY = "mcu_exam_practice_records_v1";
   const THEME_STORAGE_KEY = "mcu_exam_practice_theme_v1";
   const SESSION_STORAGE_KEY = "mcu_exam_practice_session_v1";
+  const PREFERENCES_STORAGE_KEY = "mcu_exam_practice_preferences_v1";
+  const DEFAULT_PREFERENCES = Object.freeze({
+    scope: "all",
+    excludeMasteredWrong: true,
+    roundSize: "10",
+    order: "sequential",
+    judgeMode: "instant",
+  });
+  const PREFERENCE_VALUES = {
+    scope: new Set(["all", "unattempted", "wrongHistory", "wrong1", "wrong2", "wrong3", "errorRate50", "lastWrong", "starred", "unmastered"]),
+    roundSize: new Set(["10", "20", "50", "all"]),
+    order: new Set(["sequential", "random"]),
+    judgeMode: new Set(["instant", "batch"]),
+  };
   const questions = Array.isArray(window.QUESTION_BANK) ? window.QUESTION_BANK : [];
 
   const state = {
@@ -140,6 +154,90 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state.records));
   }
 
+  function normalizePracticePreferences(input) {
+    const source = input && typeof input === "object" ? input : {};
+    return {
+      scope: PREFERENCE_VALUES.scope.has(source.scope) ? source.scope : DEFAULT_PREFERENCES.scope,
+      excludeMasteredWrong:
+        typeof source.excludeMasteredWrong === "boolean"
+          ? source.excludeMasteredWrong
+          : DEFAULT_PREFERENCES.excludeMasteredWrong,
+      roundSize: PREFERENCE_VALUES.roundSize.has(String(source.roundSize))
+        ? String(source.roundSize)
+        : DEFAULT_PREFERENCES.roundSize,
+      order: PREFERENCE_VALUES.order.has(source.order) ? source.order : DEFAULT_PREFERENCES.order,
+      judgeMode: PREFERENCE_VALUES.judgeMode.has(source.judgeMode) ? source.judgeMode : DEFAULT_PREFERENCES.judgeMode,
+    };
+  }
+
+  function loadPracticePreferences() {
+    try {
+      const raw = localStorage.getItem(PREFERENCES_STORAGE_KEY);
+      return normalizePracticePreferences(raw ? JSON.parse(raw) : DEFAULT_PREFERENCES);
+    } catch (error) {
+      console.error("练习偏好读取失败，将使用默认设置：", error);
+      return { ...DEFAULT_PREFERENCES };
+    }
+  }
+
+  function getPracticePreferences() {
+    return normalizePracticePreferences({
+      scope: el.scopeSelect.value,
+      excludeMasteredWrong: el.excludeMasteredWrong.checked,
+      roundSize: el.roundSizeSelect.value,
+      order: el.orderSelect.value,
+      judgeMode: el.judgeModeSelect.value,
+    });
+  }
+
+  function applyPracticePreferences(preferences) {
+    const normalized = normalizePracticePreferences(preferences);
+    el.scopeSelect.value = normalized.scope;
+    el.excludeMasteredWrong.checked = normalized.excludeMasteredWrong;
+    el.roundSizeSelect.value = normalized.roundSize;
+    el.orderSelect.value = normalized.order;
+    el.judgeModeSelect.value = normalized.judgeMode;
+  }
+
+  function savePracticePreferences() {
+    const preferences = getPracticePreferences();
+    try {
+      localStorage.setItem(PREFERENCES_STORAGE_KEY, JSON.stringify(preferences));
+    } catch (error) {
+      console.error("练习偏好保存失败：", error);
+    }
+    updateQuickStartPresentation();
+    return preferences;
+  }
+
+  function getSelectedOptionText(select) {
+    return select.options[select.selectedIndex] ? select.options[select.selectedIndex].textContent.trim() : "";
+  }
+
+  function getPracticeConfigSummary() {
+    const parts = [
+      getSelectedOptionText(el.scopeSelect),
+      getSelectedOptionText(el.roundSizeSelect),
+      getSelectedOptionText(el.orderSelect),
+      getSelectedOptionText(el.judgeModeSelect),
+    ];
+    if (el.excludeMasteredWrong.checked && isMistakeScope(el.scopeSelect.value)) {
+      parts.push("排除已掌握");
+    }
+    return parts.filter(Boolean).join(" · ");
+  }
+
+  function updateQuickStartPresentation() {
+    const preferences = getPracticePreferences();
+    const isDefault = Object.keys(DEFAULT_PREFERENCES).every(
+      (key) => preferences[key] === DEFAULT_PREFERENCES[key],
+    );
+    el.quickStartBtn.textContent = isDefault ? "开始默认练习" : "按当前设置开始";
+    if (!state.roundQuestions.length && questions.length) {
+      el.resultBox.textContent = `当前设置：${getPracticeConfigSummary()}。更多选项可在“设置与数据”中调整。`;
+    }
+  }
+
   function getStoredTheme() {
     try {
       return localStorage.getItem(THEME_STORAGE_KEY) === "github-dark" ? "github-dark" : "lab-light";
@@ -263,6 +361,14 @@
     el.settingsView.hidden = targetView !== "settings";
     el.viewPracticeBtn.classList.toggle("is-active", targetView === "practice");
     el.viewSettingsBtn.classList.toggle("is-active", targetView === "settings");
+    if (targetView === "practice") focusPracticeSurface();
+  }
+
+  function focusPracticeSurface() {
+    requestAnimationFrame(() => {
+      const target = state.roundCompleted ? el.roundCompletePanel : el.questionCard;
+      if (target && !target.hidden) target.focus({ preventScroll: true });
+    });
   }
 
   function getRecord(questionId) {
@@ -368,6 +474,7 @@
   }
 
   function startRound() {
+    savePracticePreferences();
     let pool = getFilteredQuestions();
     if (el.orderSelect.value === "random") {
       pool = shuffle(pool);
@@ -446,7 +553,7 @@
     const inputType = isMulti ? "checkbox" : "radio";
     el.optionsBox.innerHTML = "";
 
-    Object.entries(question.options).forEach(([letter, text]) => {
+    Object.entries(question.options).forEach(([letter, text], index) => {
       const label = document.createElement("label");
       label.className = "option-item";
 
@@ -455,6 +562,7 @@
       input.name = `question-${question.id}`;
       input.value = letter;
       input.checked = state.currentSelection.includes(letter);
+      input.setAttribute("aria-keyshortcuts", `${letter} ${index + 1}`);
 
       const content = document.createElement("span");
       content.innerHTML = `<span class="option-letter">${letter}.</span>${escapeHtml(text)}`;
@@ -775,7 +883,6 @@
   function retryWrongRound() {
     const wrongQuestions = getRoundResult().wrong.map(({ question }) => question);
     if (!wrongQuestions.length) return;
-    el.judgeModeSelect.value = "instant";
     beginRound(wrongQuestions, "instant", "本轮没有错题需要重练。");
   }
 
@@ -988,7 +1095,7 @@
     el.optionsBox.innerHTML = "";
     el.resultBox.className = "result-box muted";
     el.resultBox.textContent = questions.length
-      ? "默认练习：全部题目 · 10 题 · 顺序 · 立即判题。更多选项可在“设置与数据”中调整。"
+      ? `当前设置：${getPracticeConfigSummary()}。更多选项可在“设置与数据”中调整。`
       : message;
     el.explanationBox.style.display = "none";
     el.quickStartBtn.style.display = questions.length ? "" : "none";
@@ -1003,6 +1110,7 @@
     renderPracticeProgress();
     renderQuestionStats(null);
     renderRoundStats();
+    updateQuickStartPresentation();
   }
 
   function toggleStarred() {
@@ -1042,8 +1150,11 @@
 
   function exportRecords() {
     downloadJson(`learning-records-${new Date().toISOString().slice(0, 10)}.json`, {
+      version: 2,
       exportedAt: new Date().toISOString(),
       records: state.records,
+      preferences: getPracticePreferences(),
+      theme: getStoredTheme(),
     });
   }
 
@@ -1057,10 +1168,20 @@
         const data = JSON.parse(reader.result);
         state.records = normalizeRecords(data.records || data);
         saveRecords();
+        if (data.preferences) {
+          const preferences = normalizePracticePreferences(data.preferences);
+          applyPracticePreferences(preferences);
+          savePracticePreferences();
+        }
+        if (data.theme) {
+          const theme = data.theme === "github-dark" ? "github-dark" : "lab-light";
+          applyTheme(theme);
+          saveTheme(theme);
+        }
         resetRound();
         renderSummary();
         setView("settings");
-        alert("学习记录导入完成。");
+        alert("学习数据导入完成。");
       } catch (error) {
         console.error("学习记录导入失败：", error);
         alert("导入失败，请确认选择的是有效 JSON 文件。");
@@ -1100,6 +1221,74 @@
     downloadJson(`wrong-questions-${new Date().toISOString().slice(0, 10)}.json`, wrongList);
   }
 
+  function isTypingTarget(target) {
+    if (!(target instanceof Element)) return false;
+    if (target.matches("input[type='radio'], input[type='checkbox']")) return false;
+    return Boolean(target.closest("input, select, textarea, button, [contenteditable='true']"));
+  }
+
+  function handlePracticeKeyboard(event) {
+    if (event.repeat || state.activeView !== "practice" || el.questionNavigatorDialog.open) return;
+    if (event.altKey || event.metaKey || isTypingTarget(event.target)) return;
+
+    const question = getCurrentQuestion();
+    if (!question || state.roundCompleted) return;
+
+    if (!event.ctrlKey && event.key.toLowerCase() === "g") {
+      event.preventDefault();
+      openQuestionNavigator();
+      return;
+    }
+
+    if (!event.ctrlKey && /^[a-d1-4]$/i.test(event.key)) {
+      const index = /^[1-4]$/.test(event.key) ? Number(event.key) - 1 : event.key.toUpperCase().charCodeAt(0) - 65;
+      const input = el.optionsBox.querySelectorAll("input")[index];
+      if (input && !input.disabled) {
+        event.preventDefault();
+        input.click();
+      }
+      return;
+    }
+
+    if (event.key === "ArrowLeft" || (event.key === "Enter" && event.shiftKey)) {
+      if (!el.prevBtn.disabled) {
+        event.preventDefault();
+        previousQuestion();
+      }
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      if (!el.nextBtn.disabled) {
+        event.preventDefault();
+        nextQuestion();
+      }
+      return;
+    }
+
+    if (event.key !== "Enter") return;
+
+    if (event.ctrlKey && state.judgeMode === "batch") {
+      event.preventDefault();
+      submitRound();
+      return;
+    }
+    if (event.ctrlKey || event.shiftKey) return;
+
+    const isMulti = question.type === "多选题" || question.answer.length > 1;
+    if (state.judgeMode === "instant" && isMulti && !state.currentSubmitted) {
+      event.preventDefault();
+      submitCurrentAnswer();
+    } else if (state.judgeMode === "instant" && state.currentSubmitted) {
+      event.preventDefault();
+      if (state.currentIndex >= state.roundQuestions.length - 1) finishRound();
+      else nextQuestion();
+    } else if (state.judgeMode === "batch" && !el.nextBtn.disabled) {
+      event.preventDefault();
+      nextQuestion();
+    }
+  }
+
   function bindEvents() {
     el.viewPracticeBtn.addEventListener("click", () => setView("practice"));
     el.viewSettingsBtn.addEventListener("click", () => setView("settings"));
@@ -1117,6 +1306,7 @@
         event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
       if (outside) closeQuestionNavigator();
     });
+    el.questionNavigatorDialog.addEventListener("close", focusPracticeSurface);
     el.quickStartBtn.addEventListener("click", () => el.startBtn.click());
     el.startBtn.addEventListener("click", startRound);
     el.resetRoundBtn.addEventListener("click", resetRound);
@@ -1139,15 +1329,19 @@
     el.importRecordsInput.addEventListener("change", importRecords);
     el.exportWrongBtn.addEventListener("click", exportWrongList);
     el.clearRecordsBtn.addEventListener("click", clearRecords);
+    [el.scopeSelect, el.excludeMasteredWrong, el.roundSizeSelect, el.orderSelect, el.judgeModeSelect].forEach(
+      (control) => control.addEventListener("change", savePracticePreferences),
+    );
+    document.addEventListener("keydown", handlePracticeKeyboard);
   }
 
   function init() {
     applyTheme(getStoredTheme());
+    applyPracticePreferences(loadPracticePreferences());
     bindEvents();
     renderSummary();
     setView("practice");
     if (restorePracticeSession()) {
-      el.judgeModeSelect.value = state.judgeMode;
       if (state.roundCompleted) renderRoundComplete();
       else renderQuestion();
       return;
