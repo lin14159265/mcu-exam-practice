@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">单片机刷题</title>
+  <rect width="512" height="512" rx="104" fill="#0b6bcb"/>
+  <rect x="108" y="108" width="296" height="296" rx="42" fill="#ffffff"/>
+  <path d="M74 170h58M74 256h58M74 342h58M380 170h58M380 256h58M380 342h58M170 74v58M256 74v58M342 74v58M170 380v58M256 380v58M342 380v58" stroke="#ffffff" stroke-width="28" stroke-linecap="round"/>
+  <text x="256" y="296" fill="#0b6bcb" font-family="Arial, sans-serif" font-size="142" font-weight="700" text-anchor="middle">51</text>
+</svg>

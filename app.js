@@ -1538,4 +1538,12 @@
   }
 
   init();
+
+  if ("serviceWorker" in navigator && window.isSecureContext) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js").catch((error) => {
+        console.warn("离线缓存注册失败：", error);
+      });
+    });
+  }
 })();

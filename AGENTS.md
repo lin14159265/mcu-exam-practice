@@ -13,6 +13,7 @@
 - `explanations.json`：题目解析 sidecar，包含答案快照、知识点、核验状态、来源和人工复核队列。
 - `parser.js`：题库解析脚本。
 - `questions.js`：自动生成的数据文件，不建议手动编辑。
+- `manifest.webmanifest`、`service-worker.js`、`icon.svg`、`icon*.png`：PWA 安装、离线缓存和图标。
 - `README.md`：使用和题库解析说明。
 - `HANDOFF.md`：当前完成度、已验证状态、已知风险和后续优先级；新对话应优先阅读。
 - `start-local.bat`：Windows 本地静态服务启动脚本，用于访问 `http://127.0.0.1:8765/index.html`。
@@ -20,6 +21,7 @@
 ## 技术栈
 
 - 纯前端：HTML + CSS + JavaScript。
+- GitHub Pages 静态发布，Service Worker 提供离线缓存。
 - 无后端、无数据库、无构建工具。
 - 数据持久化使用浏览器 `localStorage`。
 - 学习记录 key 为 `mcu_exam_practice_records_v1`；主题 key 为 `mcu_exam_practice_theme_v1`；当前轮次 key 为 `mcu_exam_practice_session_v1`；练习偏好 key 为 `mcu_exam_practice_preferences_v1`。
@@ -30,6 +32,7 @@
 - 改题库或解析：先看 `parser.js`、`questions.txt` 和 `explanations.json`。
 - 改刷题流程或记录规则：先看 `app.js`。
 - 改界面布局、视图切换或主题：先看 `index.html`、`style.css` 和 `app.js`。
+- 改部署或离线能力：先看 `manifest.webmanifest`、`service-worker.js` 和 `index.html`。
 - 改使用说明：同步更新 `README.md`。
 - 接手工程或规划下一轮优化：先看 `HANDOFF.md`，再用 Git 状态核对是否已过期。
 
@@ -64,6 +67,7 @@ start-local.bat
 - 清空学习记录会删除浏览器本地数据，操作前应提醒用户导出备份。
 - 题库文本格式不统一时，解析器需要输出清晰错误，方便手动修正。
 - 题库答案与解析答案不一致时，解析器会拒绝生成，不能绕过该校验。
+- Service Worker 缓存名和入口资源版本必须同步更新，否则上线后可能继续使用旧资源；缓存不得读写或清除学习记录 key。
 
 ## 改动验证方式
 
@@ -77,3 +81,4 @@ start-local.bat
 - 修改练习偏好或快捷键后，验证刷新恢复设置、设置页不误触、题目弹窗不误触及立即/批量两种模式。
 - 修改布局后，检查做题视图和设置与数据视图能正常切换，桌面和手机窄屏下题干、选项、按钮不重叠。
 - 修改主题后，检查浅色实验室和 GitHub Dark 两套配色下选中、正确、错误、禁用状态都清晰可读。
+- 修改 PWA 后，验证 GitHub Pages 子路径、首次在线加载、断网重开、恢复联网更新以及 `localStorage` 记录保留。
