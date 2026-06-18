@@ -15,7 +15,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=20260618-uncertain1">
+    <link rel="stylesheet" href="style.css?v=20260618-study1">
   </head>
   <body>
     <header class="app-header">
@@ -46,7 +46,7 @@
             </div>
             <div id="questionActions" class="question-actions">
               <button id="starBtn" type="button">收藏</button>
-              <button id="uncertainBtn" type="button" aria-pressed="false">不确定</button>
+              <button id="uncertainBtn" type="button">不确定 / 查看答案</button>
               <button id="masteredBtn" type="button">标记掌握</button>
             </div>
           </div>
@@ -88,6 +88,7 @@
               <div><span id="roundResultTotal">0</span><small>本轮题数</small></div>
               <div><span id="roundResultCorrect">0</span><small>答对</small></div>
               <div><span id="roundResultWrong">0</span><small>答错</small></div>
+              <div><span id="roundResultReviewed">0</span><small>待复习</small></div>
               <div><span id="roundResultAccuracy">0%</span><small>正确率</small></div>
             </div>
 
@@ -97,6 +98,14 @@
                 <p>点击题目可查看本轮作答和正确答案。</p>
               </div>
               <div id="roundWrongReview" class="round-wrong-review"></div>
+            </section>
+
+            <section class="round-review-section" aria-labelledby="roundReviewedTitle">
+              <div class="round-review-header">
+                <h3 id="roundReviewedTitle">待复习回顾</h3>
+                <p>这些题本轮只查看了答案，未计入答对或答错。</p>
+              </div>
+              <div id="roundReviewedReview" class="round-wrong-review"></div>
             </section>
 
             <div class="button-row round-complete-actions">
@@ -231,13 +240,14 @@
         <span><i class="legend-swatch answered"></i>已答</span>
         <span><i class="legend-swatch correct"></i>答对</span>
         <span><i class="legend-swatch wrong"></i>答错</span>
+        <span><i class="legend-swatch reviewed"></i>待复习</span>
         <span><i class="legend-swatch current"></i>当前</span>
       </div>
 
       <div id="questionNavigatorGrid" class="question-navigator-grid" aria-label="本轮题号"></div>
     </dialog>
 
-    <script src="questions.js?v=20260618-uncertain1"></script>
-    <script src="app.js?v=20260618-uncertain1"></script>
+    <script src="questions.js?v=20260618-study1"></script>
+    <script src="app.js?v=20260618-study1"></script>
   </body>
 </html>

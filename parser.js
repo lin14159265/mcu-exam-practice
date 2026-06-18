@@ -177,8 +177,8 @@ function getSourceTrust(source, questionId) {
 }
 
 function applyExplanations(questions, data) {
-  if (!data || typeof data !== "object" || data.schemaVersion !== 1) {
-    throw new Error("explanations.json 缺失或 schemaVersion 不是 1");
+  if (!data || typeof data !== "object" || data.schemaVersion !== 2) {
+    throw new Error("explanations.json 缺失或 schemaVersion 不是 2");
   }
   if (!data.generatedAt || Number.isNaN(Date.parse(data.generatedAt))) {
     throw new Error("explanations.json generatedAt 不是有效时间");
@@ -201,12 +201,14 @@ function applyExplanations(questions, data) {
     const status = String(item.status || "").trim();
     const confidence = String(item.confidence || "").trim();
     const explanation = String(item.explanation || "").trim();
+    const knowledgePoint = String(item.knowledgePoint || "").trim();
     if (normalizeQuestionAnswer(item.answer) !== normalizeQuestionAnswer(question.answer)) {
       throw new Error(`第 ${id} 题解析答案 ${item.answer} 与题库答案 ${question.answer} 不一致`);
     }
     if (!["verified", "needs_review"].includes(status)) throw new Error(`第 ${id} 题解析状态无效：${status}`);
     if (!["high", "medium", "low"].includes(confidence)) throw new Error(`第 ${id} 题置信度无效：${confidence}`);
     if (!explanation) throw new Error(`第 ${id} 题解析正文为空`);
+    if (!knowledgePoint) throw new Error(`第 ${id} 题知识点为空`);
 
     const rawSources = Array.isArray(item.sources) ? item.sources : [];
     const seenSources = new Set();
@@ -235,6 +237,7 @@ function applyExplanations(questions, data) {
     if (status === "needs_review") needsReviewIds.add(id);
 
     question.explanation = explanation;
+    question.knowledgePoint = knowledgePoint;
     question.explanationStatus = status;
     question.explanationConfidence = confidence;
     question.sources = sources;

@@ -30,6 +30,7 @@
     draftAnswers: {},
     instantAnswers: {},
     batchAnswers: {},
+    reviewedQuestionIds: new Set(),
     batchSubmitted: false,
     roundCompleted: false,
     activeView: "practice",
@@ -89,8 +90,10 @@
     roundResultTotal: document.getElementById("roundResultTotal"),
     roundResultCorrect: document.getElementById("roundResultCorrect"),
     roundResultWrong: document.getElementById("roundResultWrong"),
+    roundResultReviewed: document.getElementById("roundResultReviewed"),
     roundResultAccuracy: document.getElementById("roundResultAccuracy"),
     roundWrongReview: document.getElementById("roundWrongReview"),
+    roundReviewedReview: document.getElementById("roundReviewedReview"),
     retryWrongBtn: document.getElementById("retryWrongBtn"),
     restartRoundBtn: document.getElementById("restartRoundBtn"),
     completeSettingsBtn: document.getElementById("completeSettingsBtn"),
@@ -280,7 +283,7 @@
       localStorage.setItem(
         SESSION_STORAGE_KEY,
         JSON.stringify({
-          version: 1,
+          version: 2,
           savedAt: new Date().toISOString(),
           roundQuestionIds: state.roundQuestions.map((question) => question.id),
           currentIndex: state.currentIndex,
@@ -288,6 +291,7 @@
           draftAnswers: state.draftAnswers,
           instantAnswers: state.instantAnswers,
           batchAnswers: state.batchAnswers,
+          reviewedQuestionIds: [...state.reviewedQuestionIds],
           batchSubmitted: state.batchSubmitted,
           roundCompleted: state.roundCompleted,
         })
@@ -327,14 +331,26 @@
       state.draftAnswers = normalizeAnswerMap(saved.draftAnswers);
       state.instantAnswers = normalizeAnswerMap(saved.instantAnswers);
       state.batchAnswers = normalizeAnswerMap(saved.batchAnswers);
+      state.reviewedQuestionIds = new Set(
+        (Array.isArray(saved.reviewedQuestionIds) ? saved.reviewedQuestionIds : [])
+          .map((id) => Number(id))
+          .filter((id) => validIds.has(String(id))),
+      );
+      state.reviewedQuestionIds.forEach((id) => {
+        delete state.draftAnswers[id];
+        delete state.instantAnswers[id];
+        delete state.batchAnswers[id];
+      });
       state.batchSubmitted =
         state.judgeMode === "batch" &&
         Boolean(saved.batchSubmitted) &&
-        roundQuestions.every((question) => state.batchAnswers[question.id]);
+        roundQuestions.every((question) => state.batchAnswers[question.id] || state.reviewedQuestionIds.has(question.id));
       state.roundCompleted =
         state.judgeMode === "batch"
           ? state.batchSubmitted
-          : Boolean(saved.roundCompleted) && roundQuestions.every((question) => state.instantAnswers[question.id]);
+          :
+            Boolean(saved.roundCompleted) &&
+            roundQuestions.every((question) => state.instantAnswers[question.id] || state.reviewedQuestionIds.has(question.id));
       return true;
     } catch (error) {
       console.error("当前练习恢复失败，已清除损坏的会话：", error);
@@ -465,6 +481,7 @@
     state.draftAnswers = {};
     state.instantAnswers = {};
     state.batchAnswers = {};
+    state.reviewedQuestionIds = new Set();
     state.batchSubmitted = false;
     state.roundCompleted = false;
 
@@ -502,6 +519,7 @@
     state.draftAnswers = {};
     state.instantAnswers = {};
     state.batchAnswers = {};
+    state.reviewedQuestionIds = new Set();
     state.batchSubmitted = false;
     state.roundCompleted = false;
     clearPracticeSession();
@@ -527,8 +545,11 @@
     const instantAnswer = state.instantAnswers[question.id] || "";
     const batchAnswer = state.batchAnswers[question.id] || "";
     const draftAnswer = state.draftAnswers[question.id] || "";
-    state.currentSubmitted = state.judgeMode === "instant" && Boolean(instantAnswer);
-    state.currentSelection = (state.judgeMode === "batch" ? batchAnswer : instantAnswer || draftAnswer).split("");
+    const isReviewed = state.reviewedQuestionIds.has(question.id);
+    state.currentSubmitted = state.judgeMode === "instant" && (Boolean(instantAnswer) || isReviewed);
+    state.currentSelection = isReviewed
+      ? []
+      : (state.judgeMode === "batch" ? batchAnswer : instantAnswer || draftAnswer).split("");
 
     el.questionPosition.textContent = `第 ${state.currentIndex + 1} / ${state.roundQuestions.length} 题 · 题库 ${question.id} 号`;
     el.questionType.textContent = question.type || "题目";
@@ -545,7 +566,9 @@
     el.explanationBox.textContent = "";
 
     renderOptions(question);
-    if (state.judgeMode === "instant" && instantAnswer) {
+    if (isReviewed) {
+      renderUncertainStudyResult(question);
+    } else if (state.judgeMode === "instant" && instantAnswer) {
       renderAnswerResult(question, instantAnswer, instantAnswer === normalizeAnswer(question.answer));
     } else if (state.judgeMode === "batch" && state.batchSubmitted && batchAnswer) {
       renderAnswerResult(question, batchAnswer, batchAnswer === normalizeAnswer(question.answer));
@@ -616,7 +639,7 @@
 
   function persistCurrentSelection() {
     const question = getCurrentQuestion();
-    if (!question || state.batchSubmitted) return;
+    if (!question || state.batchSubmitted || state.reviewedQuestionIds.has(question.id)) return;
 
     const answer = normalizeAnswer(state.currentSelection.join(""));
     if (state.judgeMode === "batch") {
@@ -650,6 +673,12 @@
     const isBatch = state.judgeMode === "batch";
     const hasQuestion = Boolean(question);
     const isLastQuestion = hasQuestion && state.currentIndex >= state.roundQuestions.length - 1;
+    const isReviewed = hasQuestion && state.reviewedQuestionIds.has(question.id);
+    const hasIndependentResult =
+      hasQuestion &&
+      ((state.judgeMode === "instant" && Boolean(state.instantAnswers[question.id])) ||
+        (state.judgeMode === "batch" && state.batchSubmitted));
+    const record = hasQuestion ? getRecord(question.id) : null;
 
     el.quickStartBtn.style.display = "none";
     el.submitAnswerBtn.style.display = hasQuestion && !isBatch && isMulti ? "" : "none";
@@ -665,8 +694,14 @@
     el.submitRoundBtn.disabled = !hasQuestion || state.batchSubmitted;
     el.viewRoundResultBtn.style.display = hasQuestion && state.roundCompleted ? "" : "none";
     el.starBtn.disabled = !hasQuestion;
-    el.uncertainBtn.disabled = !hasQuestion;
-    el.masteredBtn.disabled = !hasQuestion;
+    el.uncertainBtn.disabled = !hasQuestion || isReviewed || hasIndependentResult;
+    el.uncertainBtn.textContent = isReviewed
+      ? "已加入待复习"
+      : record && record.uncertain
+        ? "再次查看答案"
+        : "不确定 / 查看答案";
+    el.uncertainBtn.classList.toggle("is-active", Boolean(record && record.uncertain));
+    el.masteredBtn.disabled = !hasQuestion || isReviewed;
   }
 
   function submitCurrentAnswer() {
@@ -745,18 +780,32 @@
       ].join("<br>");
     }
 
-    renderExplanation(question);
+    renderExplanation(question, false);
   }
 
-  function renderExplanation(question) {
+  function renderUncertainStudyResult(question) {
+    markOptionResult(question, "");
+    el.resultBox.className = "result-box study";
+    el.resultBox.innerHTML = [
+      "已查看标准答案，本题已加入待复习。",
+      "本次仅用于学习，不计入答对、答错或做题次数。",
+      `标准答案：${escapeHtml(question.answer)}`,
+      `正确选项：${escapeHtml(getAnswerText(question, question.answer))}`,
+    ].join("<br>");
+    renderExplanation(question, true);
+  }
+
+  function renderExplanation(question, studyMode) {
     el.explanationBox.replaceChildren();
-    if (!question.explanation) {
+    if (!question.explanation && !question.knowledgePoint) {
       el.explanationBox.style.display = "none";
       return;
     }
 
     const isVerified = question.explanationStatus === "verified";
-    el.explanationBox.className = `explanation-box ${isVerified ? "verified" : "needs-review"}`;
+    el.explanationBox.className = `explanation-box ${isVerified ? "verified" : "needs-review"}${
+      studyMode ? " study-reveal" : ""
+    }`;
 
     const header = document.createElement("div");
     header.className = "explanation-header";
@@ -774,6 +823,17 @@
     const body = document.createElement("p");
     body.textContent = question.explanation;
     el.explanationBox.append(header, body);
+
+    if (question.knowledgePoint) {
+      const knowledge = document.createElement("div");
+      knowledge.className = "knowledge-point";
+      const knowledgeTitle = document.createElement("strong");
+      knowledgeTitle.textContent = "知识点";
+      const knowledgeBody = document.createElement("p");
+      knowledgeBody.textContent = question.knowledgePoint;
+      knowledge.append(knowledgeTitle, knowledgeBody);
+      el.explanationBox.appendChild(knowledge);
+    }
 
     const sources = isVerified && Array.isArray(question.sources) ? question.sources : [];
     if (sources.length) {
@@ -830,12 +890,14 @@
 
   function getRoundResult() {
     const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
-    const result = { total: state.roundQuestions.length, correct: [], wrong: [], unanswered: [] };
+    const result = { total: state.roundQuestions.length, correct: [], wrong: [], reviewed: [], unanswered: [] };
 
     state.roundQuestions.forEach((question, index) => {
       const answer = normalizeAnswer(answers[question.id]);
       const item = { question, answer, index };
-      if (!answer) {
+      if (state.reviewedQuestionIds.has(question.id)) {
+        result.reviewed.push(item);
+      } else if (!answer) {
         result.unanswered.push(item);
       } else if (answer === normalizeAnswer(question.answer)) {
         result.correct.push(item);
@@ -845,6 +907,11 @@
     });
 
     return result;
+  }
+
+  function getRoundAccuracy(result) {
+    const independentlyAnswered = result.correct.length + result.wrong.length;
+    return independentlyAnswered ? percent(result.correct.length / independentlyAnswered) : "—";
   }
 
   function finishRound() {
@@ -882,6 +949,7 @@
     }
 
     state.roundQuestions.forEach((question) => {
+      if (state.reviewedQuestionIds.has(question.id)) return;
       const answer = normalizeAnswer(state.batchAnswers[question.id]);
       updateLearningRecord(question, answer, answer === normalizeAnswer(question.answer));
     });
@@ -897,7 +965,6 @@
     const result = getRoundResult();
     if (!state.roundCompleted || result.unanswered.length) return;
 
-    const accuracy = result.total ? result.correct.length / result.total : 0;
     el.questionCard.hidden = true;
     el.roundCompletePanel.hidden = false;
     el.questionActions.hidden = true;
@@ -906,10 +973,9 @@
     el.roundResultTotal.textContent = result.total;
     el.roundResultCorrect.textContent = result.correct.length;
     el.roundResultWrong.textContent = result.wrong.length;
-    el.roundResultAccuracy.textContent = percent(accuracy);
-    el.roundResultMessage.textContent = result.wrong.length
-      ? `本轮有 ${result.wrong.length} 道错题，可点击复查或立即重练。`
-      : "本轮全部答对，可以再练本轮巩固。";
+    el.roundResultReviewed.textContent = result.reviewed.length;
+    el.roundResultAccuracy.textContent = getRoundAccuracy(result);
+    el.roundResultMessage.textContent = getRoundResultMessage(result);
     el.retryWrongBtn.disabled = result.wrong.length === 0;
     el.roundWrongReview.innerHTML = result.wrong.length
       ? result.wrong
@@ -925,10 +991,32 @@
           )
           .join("")
       : '<p class="round-perfect">本轮没有错题。</p>';
+    el.roundReviewedReview.innerHTML = result.reviewed.length
+      ? result.reviewed
+          .map(
+            ({ question, index }) => `
+              <button class="wrong-review-item reviewed" type="button" data-question-index="${index}">
+                <span class="wrong-review-number">题库 ${question.id} 号 · 待复习</span>
+                <strong>${escapeHtml(question.question)}</strong>
+                <span class="wrong-review-answer">标准答案：${escapeHtml(question.answer)}（${escapeHtml(
+                  getAnswerText(question, question.answer),
+                )}）</span>
+              </button>`,
+          )
+          .join("")
+      : '<p class="round-perfect">本轮没有仅查看答案的题目。</p>';
 
     renderPracticeProgress();
     renderRoundStats();
     setView("practice");
+  }
+
+  function getRoundResultMessage(result) {
+    const messages = [];
+    if (result.wrong.length) messages.push(`${result.wrong.length} 道错题`);
+    if (result.reviewed.length) messages.push(`${result.reviewed.length} 道待复习题`);
+    if (messages.length) return `本轮有 ${messages.join("、")}，可点击下方题目复查。`;
+    return "本轮独立作答全部正确，可以再练本轮巩固。";
   }
 
   function reviewRoundQuestion(index) {
@@ -959,9 +1047,8 @@
       el.currentUncertain.textContent = "否";
       el.currentStarred.textContent = "否";
       el.starBtn.textContent = "收藏";
-      el.uncertainBtn.textContent = "不确定";
+      el.uncertainBtn.textContent = "不确定 / 查看答案";
       el.uncertainBtn.classList.remove("is-active");
-      el.uncertainBtn.setAttribute("aria-pressed", "false");
       el.masteredBtn.textContent = "标记掌握";
       return;
     }
@@ -976,9 +1063,6 @@
     el.currentUncertain.textContent = record.uncertain ? "是" : "否";
     el.currentStarred.textContent = record.starred ? "是" : "否";
     el.starBtn.textContent = record.starred ? "取消收藏" : "收藏";
-    el.uncertainBtn.textContent = record.uncertain ? "取消不确定" : "不确定";
-    el.uncertainBtn.classList.toggle("is-active", record.uncertain);
-    el.uncertainBtn.setAttribute("aria-pressed", String(record.uncertain));
     el.masteredBtn.textContent = record.mastered ? "取消掌握" : "标记掌握";
   }
 
@@ -1007,10 +1091,14 @@
 
   function getAnsweredCount() {
     const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
-    return state.roundQuestions.reduce((count, question) => count + (answers[question.id] ? 1 : 0), 0);
+    return state.roundQuestions.reduce(
+      (count, question) => count + (answers[question.id] || state.reviewedQuestionIds.has(question.id) ? 1 : 0),
+      0,
+    );
   }
 
   function getQuestionRoundStatus(question) {
+    if (state.reviewedQuestionIds.has(question.id)) return "reviewed";
     const answers = state.judgeMode === "batch" ? state.batchAnswers : state.instantAnswers;
     const answer = normalizeAnswer(answers[question.id]);
     if (!answer) return "unanswered";
@@ -1024,6 +1112,7 @@
       answered: "已答",
       correct: "答对",
       wrong: "答错",
+      reviewed: "待复习",
     }[status];
   }
 
@@ -1131,7 +1220,8 @@
         `<strong>本轮题数：</strong>${result.total}`,
         `<strong>答对数量：</strong>${result.correct.length}`,
         `<strong>答错数量：</strong>${result.wrong.length}`,
-        `<strong>正确率：</strong>${percent(result.total ? result.correct.length / result.total : 0)}`,
+        `<strong>待复习数量：</strong>${result.reviewed.length}`,
+        `<strong>正确率：</strong>${getRoundAccuracy(result)}`,
       ].join("<br>");
       return;
     }
@@ -1141,9 +1231,7 @@
     el.roundStats.innerHTML = [
       `<strong>本轮题数：</strong>${state.roundQuestions.length}`,
       `<strong>当前进度：</strong>${state.currentIndex + 1} / ${state.roundQuestions.length}`,
-      state.judgeMode === "batch"
-        ? `<strong>已保存答案：</strong>${answered}`
-        : `<strong>已完成题目：</strong>${answered}`,
+      `<strong>已完成题目：</strong>${answered}`,
       `<strong>模式：</strong>${state.judgeMode === "batch" ? "批量提交" : "立即判题"}`,
     ].join("<br>");
   }
@@ -1191,17 +1279,27 @@
     renderSummary();
   }
 
-  function toggleUncertain() {
+  function revealUncertainQuestion() {
     const question = getCurrentQuestion();
     if (!question) return;
+    const hasIndependentResult =
+      (state.judgeMode === "instant" && Boolean(state.instantAnswers[question.id])) ||
+      (state.judgeMode === "batch" && state.batchSubmitted);
+    if (hasIndependentResult || state.reviewedQuestionIds.has(question.id)) return;
+
+    delete state.draftAnswers[question.id];
+    delete state.instantAnswers[question.id];
+    delete state.batchAnswers[question.id];
+    state.currentSelection = [];
+    state.reviewedQuestionIds.add(question.id);
+
     const record = getRecord(question.id);
-    record.uncertain = !record.uncertain;
-    if (record.uncertain) {
-      record.mastered = false;
-      record.consecutiveCorrect = 0;
-    }
+    record.uncertain = true;
+    record.mastered = false;
+    record.consecutiveCorrect = 0;
     saveRecords();
-    renderQuestionStats(question);
+    savePracticeSession();
+    renderQuestion();
     renderSummary();
   }
 
@@ -1408,8 +1506,12 @@
       const item = event.target.closest && event.target.closest("[data-question-index]");
       if (item) reviewRoundQuestion(Number(item.dataset.questionIndex));
     });
+    el.roundReviewedReview.addEventListener("click", (event) => {
+      const item = event.target.closest && event.target.closest("[data-question-index]");
+      if (item) reviewRoundQuestion(Number(item.dataset.questionIndex));
+    });
     el.starBtn.addEventListener("click", toggleStarred);
-    el.uncertainBtn.addEventListener("click", toggleUncertain);
+    el.uncertainBtn.addEventListener("click", revealUncertainQuestion);
     el.masteredBtn.addEventListener("click", toggleMastered);
     el.exportRecordsBtn.addEventListener("click", exportRecords);
     el.importRecordsInput.addEventListener("change", importRecords);

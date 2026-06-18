@@ -23,7 +23,8 @@ window.QUESTION_BANK = [
         "locator": "特性列表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51内部集成两个16位定时/计数器T0和T1。"
   },
   {
     "id": 2,
@@ -48,7 +49,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "端口功能表明P3.1在第二功能下连接串口发送端TXD，因此P3.1的第二功能是串口输出端。"
   },
   {
     "id": 3,
@@ -64,7 +66,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：TH0=N>>8的含义是将保存到TH0中；答案要点：N的高八位。"
   },
   {
     "id": 4,
@@ -78,7 +81,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：动态显示中，利用74HC138实现片选时，必须确保数码管的类型是；答案要点：共阴极。"
   },
   {
     "id": 5,
@@ -103,7 +107,8 @@ window.QUESTION_BANK = [
         "locator": "包装信息",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51采用40脚双列直插封装。"
   },
   {
     "id": 6,
@@ -128,7 +133,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "Philips硬件手册指出定时/计数器0和1有四种模式(模式0~3)，其中模式3只适用于定时器0，因此T0具有四种工作方式。"
   },
   {
     "id": 7,
@@ -144,7 +150,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：外中断0中断服务函数的编号为；答案要点：0。"
   },
   {
     "id": 8,
@@ -158,7 +165,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51单片机在定时器0和外中断0同时申请中断时，CPU首先响应；答案要点：外中断0。"
   },
   {
     "id": 9,
@@ -174,7 +182,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：SCON中RI的含义；答案要点：接收完毕中断标志。"
   },
   {
     "id": 10,
@@ -190,7 +199,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51单片机可以访问的最大程序存储器空间；答案要点：64KB。"
   },
   {
     "id": 11,
@@ -215,7 +225,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "硬件说明书描述：定时器1只支持模式0、1、2；模式3仅用于定时器0。"
   },
   {
     "id": 12,
@@ -240,7 +251,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "端口3替代功能表明P3.0连接串口RXD作为串口输入端，因此其第二功能是串口输入。"
   },
   {
     "id": 13,
@@ -256,7 +268,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行通信中方式2的波特率是；答案要点：晶振频率/32。"
   },
   {
     "id": 14,
@@ -272,7 +285,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串口工作在方式1允许接收，则SCON应该取值为；答案要点：0x50。"
   },
   {
     "id": 15,
@@ -288,7 +302,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：12MHz晶振下，定时器在方式1下最大定时时间为；答案要点：65.536ms。"
   },
   {
     "id": 16,
@@ -313,7 +328,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口在模式2和模式3传输11位，其中第九位数据由RB8保存。"
   },
   {
     "id": 17,
@@ -329,7 +345,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：单片机是将做到一块集成电路芯片中，称为单片机；答案要点：CPU、RAM、ROM、I/O设备。"
   },
   {
     "id": 18,
@@ -354,7 +371,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC595的数据手册指出MR为复位信号，低电平时清空移位寄存器内容，因此其功能是存储器清零。"
   },
   {
     "id": 19,
@@ -370,7 +388,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：C51中用符号表示十六进制数字；答案要点：0X。"
   },
   {
     "id": 20,
@@ -395,7 +414,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON寄存器中的TF0位是定时器0溢出标志，当T0溢出时硬件置1，因此TF0的含义是定时器T0溢出位。"
   },
   {
     "id": 21,
@@ -411,7 +431,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：在MCS-51系统中，若晶振频率为6MHz，一个机器周期等于μs；答案要点：2。"
   },
   {
     "id": 22,
@@ -427,7 +448,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行通信中的起始位由电平表示；答案要点：低。"
   },
   {
     "id": 23,
@@ -450,7 +472,8 @@ window.QUESTION_BANK = [
         "locator": "复位描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "数据手册指出RST引脚保持高电平两个机器周期即可复位单片机，复位完成后需将RST拉低才能退出复位。"
   },
   {
     "id": 24,
@@ -466,7 +489,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器的最高位EA是全局中断控制位，EA=1时允许各中断位起作用，EA=0时屏蔽全部中断。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器的最高位EA是全局中断控制位，EA=1时允许各中断位起作用，EA=0时屏蔽全部中断。"
   },
   {
     "id": 25,
@@ -482,7 +506,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：定时器T0和T1均工作在方式1，则TMOD需要设置为；答案要点：0X11。"
   },
   {
     "id": 26,
@@ -507,7 +532,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "P3.2的第二功能是INT0外部中断0输入端，数据手册在端口替代功能表中列出P3.2=INT0。"
   },
   {
     "id": 27,
@@ -523,7 +549,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：已知X的补码为00001000B，则X的真值是十进制；答案要点：8。"
   },
   {
     "id": 28,
@@ -539,7 +566,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：SCON中TI的含义；答案要点：发送完毕中断标志。"
   },
   {
     "id": 29,
@@ -564,7 +592,8 @@ window.QUESTION_BANK = [
         "locator": "端口功能表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "P3口的每一个引脚既是普通I/O又兼具串口、外部中断、定时器输入等功能，而其它端口仅用于通用I/O，因此具有第二功能引脚的端口是P3。"
   },
   {
     "id": 30,
@@ -589,7 +618,8 @@ window.QUESTION_BANK = [
         "locator": "特性列表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51为全静态CMOS设计，手册指出其最大工作频率可达24MHz。"
   },
   {
     "id": 31,
@@ -605,7 +635,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行口中断服务函数的编号为；答案要点：4。"
   },
   {
     "id": 32,
@@ -621,7 +652,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：在16*16点阵显示中，逐行扫描的频率最小为Hz；答案要点：16*24。"
   },
   {
     "id": 33,
@@ -637,7 +669,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：要设计一个32键的行列式键盘，至少需要占用根引脚线；答案要点：12。"
   },
   {
     "id": 34,
@@ -662,7 +695,8 @@ window.QUESTION_BANK = [
         "locator": "标准串行接口章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "硬件说明书描述串口为全双工，能够同时发送和接收数据，并具有独立的接收缓冲区。"
   },
   {
     "id": 35,
@@ -676,7 +710,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51单片机对内部脉冲计数实现的是功能；答案要点：定时器。"
   },
   {
     "id": 36,
@@ -692,7 +727,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：在C51编程中sbit用于声明特殊功能寄存器的位，例如P0.0、P3.7等，用于直接访问单个位。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "在C51编程中sbit用于声明特殊功能寄存器的位，例如P0.0、P3.7等，用于直接访问单个位。"
   },
   {
     "id": 37,
@@ -717,7 +753,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "P3.3在端口替代功能表中对应外部中断1输入端(INT1)，因此第二功能为INT1。"
   },
   {
     "id": 38,
@@ -742,7 +779,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "SCON寄存器的SM0、SM1位选择串口模式，其中00表示模式0(同步移位寄存器方式)。"
   },
   {
     "id": 39,
@@ -767,7 +805,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC595的OE为输出使能端，OE为低时锁存输出端有效，为高时输出进入高阻。"
   },
   {
     "id": 40,
@@ -783,7 +822,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：bit类型用于声明位变量，它占用位寻址区中的一个位，可用于表示0或1。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "bit类型用于声明位变量，它占用位寻址区中的一个位，可用于表示0或1。"
   },
   {
     "id": 41,
@@ -808,7 +848,8 @@ window.QUESTION_BANK = [
         "locator": "端口功能表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "P3端口每个引脚都有第二功能，如串口、定时器输入、写读外部RAM等，其他端口不具备此类功能，因此具有第二功能的端口是P3。"
   },
   {
     "id": 42,
@@ -833,7 +874,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "异步串口帧由起始位(0)、数据位和停止位组成，停止位为1(高电平)，因此停止位由高电平标识。"
   },
   {
     "id": 43,
@@ -849,7 +891,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：C51中用符号表示八进制数字；答案要点：O。"
   },
   {
     "id": 44,
@@ -865,7 +908,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：欲使P1口的低4位输出0，高4位不变，应执行一条命令；答案要点：P1&=0XF0。"
   },
   {
     "id": 45,
@@ -881,7 +925,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器的位0 (EX0) 用于使能外部中断0，设为1允许外中断0触发。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器的位0 (EX0) 用于使能外部中断0，设为1允许外中断0触发。"
   },
   {
     "id": 46,
@@ -897,7 +942,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：外中断1中断服务函数的编号为；答案要点：2。"
   },
   {
     "id": 47,
@@ -922,7 +968,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON寄存器的IE0位是外部中断0的中断请求标志，该位由硬件在检测到触发沿时置1。"
   },
   {
     "id": 48,
@@ -947,7 +994,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式1为异步通信，每次传输10位(起始位+8位数据+停止位)，因此称为8位异步通信模式。"
   },
   {
     "id": 49,
@@ -963,7 +1011,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行通信中的空闲信号由电平标示；答案要点：高。"
   },
   {
     "id": 50,
@@ -979,7 +1028,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：通常一个16*16点阵汉字需要字节保存；答案要点：32。"
   },
   {
     "id": 51,
@@ -1004,7 +1054,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TR0是定时器0运行控制位，软件写1启动定时器0，写0停止定时器0。"
   },
   {
     "id": 52,
@@ -1020,7 +1071,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：打开定时器T0和T1中断，需要设置IE为；答案要点：0X8A。"
   },
   {
     "id": 53,
@@ -1045,7 +1097,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器模式1使用16位计数器，由寄存器THx和TLx组成，最大计数65536，即16位二进制计数。"
   },
   {
     "id": 54,
@@ -1070,7 +1123,8 @@ window.QUESTION_BANK = [
         "locator": "特性列表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51提供32条可编程I/O线，即4个8位端口(P0~P3)，故有4个端口。"
   },
   {
     "id": 55,
@@ -1086,7 +1140,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：当允许定时器1工作在方式1时，控制字TMOD应为；答案要点：0X10。"
   },
   {
     "id": 56,
@@ -1111,7 +1166,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON寄存器中的TF1是定时器/计数器1溢出标志，当T1溢出时由硬件置位。"
   },
   {
     "id": 57,
@@ -1136,7 +1192,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式0为同步移位寄存器方式，通过RxD串行移位8位数据并由TxD输出移位时钟，是固定速率的同步通信。"
   },
   {
     "id": 58,
@@ -1161,7 +1218,8 @@ window.QUESTION_BANK = [
         "locator": "文档标题",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51的CPU处理字长为8位，为标准的8位单片机。"
   },
   {
     "id": 59,
@@ -1186,7 +1244,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器在计时方式下每个机器周期计数一次。"
   },
   {
     "id": 60,
@@ -1202,7 +1261,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：在异步通信中若每个字符由10位组成，串行口波特率为4800bps，则每秒传送字符数最多为；答案要点：480。"
   },
   {
     "id": 61,
@@ -1218,7 +1278,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：开机时，TR0的默认值是；答案要点：0。"
   },
   {
     "id": 62,
@@ -1234,7 +1295,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器的ES位为串行口中断允许位，ES=1时启用串口中断，=0时禁止串口中断。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器的ES位为串行口中断允许位，ES=1时启用串口中断，=0时禁止串口中断。"
   },
   {
     "id": 63,
@@ -1259,7 +1321,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "SH_CP是74HC595的移位时钟输入端，数据在SH_CP的低到高跃变时移入移位寄存器。"
   },
   {
     "id": 64,
@@ -1284,7 +1347,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ST_CP是74HC595的锁存时钟输入，每个上升沿将移位寄存器中的数据锁存到输出缓冲，从而更新输出。"
   },
   {
     "id": 65,
@@ -1300,7 +1364,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：T1中断服务函数的编号为；答案要点：3。"
   },
   {
     "id": 66,
@@ -1325,7 +1390,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器工作在定时模式时由内部时钟驱动向上计数，没有减计数功能，因此采用加计数方式。"
   },
   {
     "id": 67,
@@ -1341,7 +1407,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：若振荡频率为12MHz，在方式2下最大定时时间为；答案要点：0.256ms。"
   },
   {
     "id": 68,
@@ -1366,7 +1433,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口工作方式由SCON寄存器的SM0、SM1等位控制，因此串形接口模式由SCON寄存器设定。"
   },
   {
     "id": 69,
@@ -1391,7 +1459,8 @@ window.QUESTION_BANK = [
         "locator": "模式2描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "模式2传输11位数据，其中包括可编程的第九位数据位和固定起始/停止位；文档指出其波特率是晶振频率的1/32或1/64，属于固定频率9位通信。"
   },
   {
     "id": 70,
@@ -1416,7 +1485,8 @@ window.QUESTION_BANK = [
         "locator": "特性描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809的转换速率由时钟信号决定。"
   },
   {
     "id": 71,
@@ -1432,7 +1502,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：下面种方式适合用于处理外部突发事件；答案要点：中断。"
   },
   {
     "id": 72,
@@ -1456,7 +1527,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC138是3线至8线译码器，地址输入A、B、C决定哪一个输出为低电平，从而改变输出状态。"
   },
   {
     "id": 73,
@@ -1481,7 +1553,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "手册列出串口有四种工作方式：模式0(移位寄存器)、模式1(8位异步)、模式2(固定9位)和模式3(可变9位)，因此共有四种。"
   },
   {
     "id": 74,
@@ -1497,7 +1570,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：1个16*16点阵可以由个8*8点阵实现；答案要点：4。"
   },
   {
     "id": 75,
@@ -1522,7 +1596,8 @@ window.QUESTION_BANK = [
         "locator": "Multiprocessor Communications",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "SM2位用于多机通信功能。"
   },
   {
     "id": 76,
@@ -1547,7 +1622,8 @@ window.QUESTION_BANK = [
         "locator": "模式3描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "模式3与模式2相同也是9位通信，但模式3的波特率由定时器产生可变，因此属于可变频率9位通信。"
   },
   {
     "id": 77,
@@ -1572,7 +1648,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC595的DS引脚是串行数据输入端，串行数据从此端输入移位寄存器。"
   },
   {
     "id": 78,
@@ -1588,7 +1665,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器的EX1位是外中断1允许位，EX1=1时允许INT1产生中断，=0时禁止。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器的EX1位是外中断1允许位，EX1=1时允许INT1产生中断，=0时禁止。"
   },
   {
     "id": 79,
@@ -1604,7 +1682,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：CPU又称为；答案要点：中央处理器。"
   },
   {
     "id": 80,
@@ -1620,7 +1699,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51复位时,下述说法正确的是；答案要点：TH0=00H。"
   },
   {
     "id": 81,
@@ -1645,7 +1725,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "晶振频率为12MHz时，机器周期为12个振荡周期，即1μs，因此定时器的工作时钟周期为1μs。"
   },
   {
     "id": 82,
@@ -1661,7 +1742,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：设计一个16键的矩阵式键盘，至少需要占用IO引脚；答案要点：8。"
   },
   {
     "id": 83,
@@ -1677,7 +1759,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：电子时钟项目中包括模块；答案要点：数码管显示模块、按键、74595。"
   },
   {
     "id": 84,
@@ -1692,7 +1775,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：一般常用显示字符点阵，而用显示汉字点阵；答案要点：16*16、8*8。"
   },
   {
     "id": 85,
@@ -1707,7 +1791,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：A/D转换后的结果可以采用方法采集；答案要点：查询、中断、延时。"
   },
   {
     "id": 86,
@@ -1732,7 +1817,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器/计数器1支持模式0(13位)、模式1(16位)和模式2(8位自动重载)三种工作方式，模式3仅对定时器0有效。"
   },
   {
     "id": 87,
@@ -1748,7 +1834,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51单片机最小系统包括；答案要点：电源电路、时钟电路、复位电路。"
   },
   {
     "id": 88,
@@ -1764,7 +1851,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：超声波身高检测系统中包括模块；答案要点：语音模块、串行口通信、超声波模块。"
   },
   {
     "id": 89,
@@ -1780,7 +1868,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：数码管按照公共端的不同可以分为类型；答案要点：共阴极、共阳极。"
   },
   {
     "id": 90,
@@ -1796,7 +1885,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：利用单片机实现电子琴的设计时，可采用来发声；答案要点：扬声器、无源蜂鸣器。"
   },
   {
     "id": 91,
@@ -1812,7 +1902,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：利用定时器可以实现功能；答案要点：产生方波、计数、延时、定时。"
   },
   {
     "id": 92,
@@ -1828,7 +1919,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：驱动数码管动态显示的芯片可以采用；答案要点：74595、7447、74138。"
   },
   {
     "id": 93,
@@ -1844,7 +1936,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51的并行端口作输入口时，必须先写 才能读入外设的状态；答案要点：1、高电平。"
   },
   {
     "id": 94,
@@ -1869,7 +1962,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器中断由定时器溢出标志TF0和TF1产生；当定时器0或1溢出时，TCON中的TF0/TF1位被硬件置位并可触发中断。"
   },
   {
     "id": 95,
@@ -1902,7 +1996,8 @@ window.QUESTION_BANK = [
         "locator": "功能描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809内含一个8位A/D转换器，具有8个模拟输入通道和8个数字输出端；通过3个地址输入选择所需通道，同时需要一个时钟输入控制转换。"
   },
   {
     "id": 96,
@@ -1918,7 +2013,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：在工程设计中，定时器T0常用作，定时T1常用作；答案要点：定时、波特率发生。"
   },
   {
     "id": 97,
@@ -1934,7 +2030,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：串口中断由发送完毕标志TI和接收完毕标志RI触发，任意一个标志置1都会产生串口中断。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "串口中断由发送完毕标志TI和接收完毕标志RI触发，任意一个标志置1都会产生串口中断。"
   },
   {
     "id": 98,
@@ -1950,7 +2047,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51的堆栈存取数据的原则是；答案要点：先进后出、后进先出。"
   },
   {
     "id": 99,
@@ -1966,7 +2064,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：8051共有五个中断源：外中断0、定时器0、外中断1、定时器1和串口中断；题目列出的四个选项正是这五个中断源的组成。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "8051共有五个中断源：外中断0、定时器0、外中断1、定时器1和串口中断；题目列出的四个选项正是这五个中断源的组成。"
   },
   {
     "id": 100,
@@ -1991,7 +2090,8 @@ window.QUESTION_BANK = [
         "locator": "功能描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809具有8个模拟输入端，但在任何时刻只有一个通道通过内部多路复用器连接到A/D转换器转换为数字输出。"
   },
   {
     "id": 101,
@@ -2005,7 +2105,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：常用的延时方法包括；答案要点：定时器延时、软件延时。"
   },
   {
     "id": 102,
@@ -2021,7 +2122,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：独立按键扫描方法包括；答案要点：延时等待法、键标志法。"
   },
   {
     "id": 103,
@@ -2037,7 +2139,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：常见的波特率包括；答案要点：2400、1200、4800、9600。"
   },
   {
     "id": 104,
@@ -2053,7 +2156,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：AT89C51支持外部中断、定时器中断和串口中断，手册未给出看门狗中断，因此题目列出的外中断、串口中断和定时器中断正确。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "AT89C51支持外部中断、定时器中断和串口中断，手册未给出看门狗中断，因此题目列出的外中断、串口中断和定时器中断正确。"
   },
   {
     "id": 105,
@@ -2069,7 +2173,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：与状态相关参数有；答案要点：触发信号、响应信号、状态圆圈、状态转移线。"
   },
   {
     "id": 106,
@@ -2085,7 +2190,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：单片机控制系统中，常见的按键包括；答案要点：矩阵式按键、轻触开关、旋钮开关、拨码开关。"
   },
   {
     "id": 107,
@@ -2101,7 +2207,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：无源蜂鸣器的特点是；答案要点：两个引脚长度相同、外加电源后还需要加音源才能发声。"
   },
   {
     "id": 108,
@@ -2117,7 +2224,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：计算器项目中包括模块；答案要点：数码管、单片机、按键。"
   },
   {
     "id": 109,
@@ -2142,7 +2250,8 @@ window.QUESTION_BANK = [
         "locator": "串口描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串行通信按传输方向可分为单工、半双工和全双工三种；其中半双工表示双向但不能同时传输，全双工可以同时发送与接收。"
   },
   {
     "id": 110,
@@ -2157,7 +2266,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：按键在与IO相连时一般需要连接电阻；答案要点：下拉、上拉。"
   },
   {
     "id": 111,
@@ -2173,7 +2283,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：可利用串行口进行通信的设备包括；答案要点：语音模块、超声波模块、GPS模块、GSM模块。"
   },
   {
     "id": 112,
@@ -2198,7 +2309,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "异步串行数据帧由起始位(0)、数位若干、可选校验位和停止位(1)组成，这些字段构成完整帧格式。"
   },
   {
     "id": 113,
@@ -2223,7 +2335,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "外部中断的触发方式由TCON寄存器中IT0和IT1控制，这两个位选择低电平触发(0)或下降沿触发(1)。"
   },
   {
     "id": 114,
@@ -2248,7 +2361,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器的工作涉及多种寄存器：TMOD用于设置模式，TCON包含启动和溢出标志，TRx位控制启动/停止，IE寄存器用于使能定时器中断。"
   },
   {
     "id": 115,
@@ -2263,7 +2377,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：计算机中常用于表达数值的码制有；答案要点：反码、原码、补码。"
   },
   {
     "id": 116,
@@ -2279,7 +2394,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：74hc595可以用于驱动；答案要点：点阵、数码管。"
   },
   {
     "id": 117,
@@ -2295,7 +2411,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：合法的中断服务函数的编号为；答案要点：2、3、1、0。"
   },
   {
     "id": 118,
@@ -2310,7 +2427,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：常用的数码管显示方式包括；答案要点：动态显示、静态显示。"
   },
   {
     "id": 119,
@@ -2326,7 +2444,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：在IE寄存器中，EA是总中断允许位，ET0是定时器0中断允许位，EX0是外中断0允许位，题目所列正是这些含义。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "在IE寄存器中，EA是总中断允许位，ET0是定时器0中断允许位，EX0是外中断0允许位，题目所列正是这些含义。"
   },
   {
     "id": 120,
@@ -2351,7 +2470,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式0为移位寄存器方式(同步通信)，模式1为异步通信，模式2/3用于多机通信(具有可编程的第九位)。"
   },
   {
     "id": 121,
@@ -2376,7 +2496,8 @@ window.QUESTION_BANK = [
         "locator": "复位描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "单片机复位时RST保持高电平，在释放复位时必须拉低RST脚才能进入正常执行状态，因此题目中\"0\"或\"低\"表示RST回到低电平。"
   },
   {
     "id": 122,
@@ -2401,7 +2522,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "T0支持模式0、1、2、3四种工作方式，分别为13位、16位、8位自动重载和分离计数器模式。"
   },
   {
     "id": 123,
@@ -2417,7 +2539,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：下列属于输出设备的是；答案要点：继电器、蜂鸣器、可控硅。"
   },
   {
     "id": 124,
@@ -2433,7 +2556,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：矩阵式按键主要应用场合是；答案要点：IO口资源紧张、按键较多。"
   },
   {
     "id": 125,
@@ -2458,7 +2582,8 @@ window.QUESTION_BANK = [
         "locator": "特性列表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51内部包括中断控制系统、程序存储器(Flash/ROM)、两个定时器/计数器和一个全双工串行口等硬件模块。"
   },
   {
     "id": 126,
@@ -2472,7 +2597,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：有源蜂鸣器的两个引脚是等长的；答案要点：错。"
   },
   {
     "id": 127,
@@ -2495,7 +2621,8 @@ window.QUESTION_BANK = [
         "locator": "Serial Data Buffer段",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "手册指出SBUF是串行口收发缓冲寄存器，实际由发送缓冲和接收缓冲两部分组成。"
   },
   {
     "id": 128,
@@ -2509,7 +2636,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：AT89C51单片机的外中断常工作在下降沿触发模式下；答案要点：对。"
   },
   {
     "id": 129,
@@ -2532,7 +2660,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON寄存器中的TF1是定时器1溢出标志，在定时器溢出时由硬件置位，这是定时器溢出的标记。"
   },
   {
     "id": 130,
@@ -2555,7 +2684,8 @@ window.QUESTION_BANK = [
         "locator": "模式0描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式0的数据经移位寄存器同步传输，因此又称为移位寄存器方式。"
   },
   {
     "id": 131,
@@ -2578,7 +2708,8 @@ window.QUESTION_BANK = [
         "locator": "串口描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串行通信按照数据方向分为单工、半双工和全双工三种，因此题目表述正确。"
   },
   {
     "id": 132,
@@ -2592,7 +2723,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：串口中断请求发生时，RI和TI至少有一个被置1；RI表示接收完成，TI表示发送完成，任意一个为1都会使硬件设置串口中断标志。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "串口中断请求发生时，RI和TI至少有一个被置1；RI表示接收完成，TI表示发送完成，任意一个为1都会使硬件设置串口中断标志。"
   },
   {
     "id": 133,
@@ -2606,7 +2738,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：启用定时器0中断不能只设置ET0，还必须设置总中断允许位EA。因此IE=0x02仅设置ET0而EA=0，不能开启中断，故题目错误。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "启用定时器0中断不能只设置ET0，还必须设置总中断允许位EA。"
   },
   {
     "id": 134,
@@ -2620,7 +2753,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：中断优先级由IP寄存器设置，IP位为1的中断优先级高于为0的中断。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "中断优先级由IP寄存器设置，IP位为1的中断优先级高于为0的中断。"
   },
   {
     "id": 135,
@@ -2634,7 +2768,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：开机复位后，每个端口的状态为0；答案要点：错。"
   },
   {
     "id": 136,
@@ -2648,7 +2783,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：有源蜂鸣器的引脚的极性为长正短负；答案要点：对。"
   },
   {
     "id": 137,
@@ -2662,7 +2798,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：中断服务函数中 interrupt 1指的是T0中断的服务函数；答案要点：对。"
   },
   {
     "id": 138,
@@ -2685,7 +2822,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON中的IT1是外部中断1触发方式控制位，IE1才是外部中断1的请求标志。"
   },
   {
     "id": 139,
@@ -2699,7 +2837,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：超声波模块可以工作在串行口模式；答案要点：对。"
   },
   {
     "id": 140,
@@ -2722,7 +2861,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "P3.2是外部中断0输入端，P3.3才是外部中断1输入端，所以题目中说外部中断1输入引脚是P3.2是错误的。"
   },
   {
     "id": 141,
@@ -2745,7 +2885,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器1常用作串口波特率发生器，特别是在模式2(8位自动重载)下可产生波特率，因此题目正确。"
   },
   {
     "id": 142,
@@ -2768,7 +2909,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "启动定时器T0需要将TR0位置1；当TR0=1时计数器开始计数，TR0=0时停止。"
   },
   {
     "id": 143,
@@ -2782,7 +2924,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：无源蜂鸣器的两个引脚是等长的；答案要点：对。"
   },
   {
     "id": 144,
@@ -2796,7 +2939,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：独立按键识别时，先延时再判断的目的是避开按键抖动；答案要点：对。"
   },
   {
     "id": 145,
@@ -2819,7 +2963,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "AT89C51内部有两个16位定时/计数器，T0有四种模式而非三种，因此题目说T0只有3种工作方式是错误的。"
   },
   {
     "id": 146,
@@ -2842,7 +2987,8 @@ window.QUESTION_BANK = [
         "locator": "特性描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809只有一个8位A/D转换器，它通过内部8路模拟多路复用器选择输入通道，故不存在8个独立的电压转换模块，因此题目错误。"
   },
   {
     "id": 147,
@@ -2865,7 +3011,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "端口3的P3.3引脚在替代功能中对应外部中断1输入端INT1，因此题目正确。"
   },
   {
     "id": 148,
@@ -2879,7 +3026,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器中的ET1位用于允许定时器1中断，ET1=1时T1溢出会产生中断，题目正确。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器中的ET1位用于允许定时器1中断，ET1=1时T1溢出会产生中断，题目正确。"
   },
   {
     "id": 149,
@@ -2902,7 +3050,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "外部中断可配置为低电平触发或下降沿触发；TCON寄存器中的IT0和IT1位决定触发方式，0代表低电平触发，1代表下降沿触发。"
   },
   {
     "id": 150,
@@ -2925,7 +3074,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "P3.2的替代功能是外部中断0输入端INT0，因此题目正确。"
   },
   {
     "id": 151,
@@ -2939,7 +3089,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：打开T0中断时不仅要设置ET0=1，还要将EA=1，所以仅设置ET0不足以启用中断，题目错误。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "打开T0中断时不仅要设置ET0=1，还要将EA=1，所以仅设置ET0不足以启用中断，题目错误。"
   },
   {
     "id": 152,
@@ -2953,7 +3104,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行口中断结束后RI由硬件自动清零；答案要点：错。"
   },
   {
     "id": 153,
@@ -2976,7 +3128,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC595是串行输入/并行输出移位寄存器，其输出通过OE控制门控并带有锁存功能，但其主要作用是移位和锁存而不只是存储。"
   },
   {
     "id": 154,
@@ -2990,7 +3143,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：有符号8位整数范围是−128到+127。C51编程文档给出了signed char类型的范围为−128到+127。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "有符号8位整数范围是−128到+127。"
   },
   {
     "id": 155,
@@ -3004,7 +3158,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：当所有中断优先级相同（默认）时，外部中断0优先级最高，串口中断优先级最低，题目说外中断0最低优先级是不正确的。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "当所有中断优先级相同（默认）时，外部中断0优先级最高，串口中断优先级最低，题目说外中断0最低优先级是不正确的。"
   },
   {
     "id": 156,
@@ -3018,7 +3173,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：定时器T0工作在方式1下，采用定时功能，门控位不使用，则TMOD=1；答案要点：对。"
   },
   {
     "id": 157,
@@ -3041,7 +3197,8 @@ window.QUESTION_BANK = [
         "locator": "特性描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809是8位转换器，输出分辨率为256个数字级，因此电压分辨率等于参考电压除以256。"
   },
   {
     "id": 158,
@@ -3055,7 +3212,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：LED常采用灌电流的驱动方式；答案要点：对。"
   },
   {
     "id": 159,
@@ -3078,7 +3236,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "外部中断1的中断请求标志是IE1，而TF1是定时器1溢出标志，二者不同，因此题目错误。"
   },
   {
     "id": 160,
@@ -3092,7 +3251,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：IP的默认值为0；答案要点：对。"
   },
   {
     "id": 161,
@@ -3115,7 +3275,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TCON寄存器的IT1位为外部中断1触发方式控制位，当IT1=1时表示下降沿触发，因此题目说IT1=1表示边沿触发正确。"
   },
   {
     "id": 162,
@@ -3129,7 +3290,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：矩阵式按键扫描常用的方法有翻转法和扫描法；答案要点：对。"
   },
   {
     "id": 163,
@@ -3152,7 +3314,8 @@ window.QUESTION_BANK = [
         "locator": "特性列表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "MCS-51芯片有四个8位并行I/O端口，共32条I/O线，因此说内部有4个并行口是正确的。"
   },
   {
     "id": 164,
@@ -3166,7 +3329,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：数码管动态显示利用了视觉暂留效应；答案要点：对。"
   },
   {
     "id": 165,
@@ -3189,7 +3353,8 @@ window.QUESTION_BANK = [
         "locator": "模式1描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "SCON寄存器的SM0=0、SM1=1配置串口为模式1(8位异步通信)，因此SM0,SM1取01即为串行工作方式1。"
   },
   {
     "id": 166,
@@ -3212,7 +3377,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters模式说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口波特率发生器通常使用定时器1的模式2(8位自动重载)，而非模式1，因此说定时器1模式1常用于波特率发生器是不正确的。"
   },
   {
     "id": 167,
@@ -3226,7 +3392,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：无符号字节型(unsigned char)取值范围是0~255，C51编程资料中给出了这一范围。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "无符号字节型(unsigned char)取值范围是0~255，C51编程资料中给出了这一范围。"
   },
   {
     "id": 168,
@@ -3240,7 +3407,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：CPU的运算器可以完成算数运算和逻辑运算；答案要点：对。"
   },
   {
     "id": 169,
@@ -3254,7 +3422,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：89的补码用8位二进制数表示是01011001B；答案要点：对。"
   },
   {
     "id": 170,
@@ -3277,7 +3446,8 @@ window.QUESTION_BANK = [
         "locator": "Multiprocessor Communications",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "SM2用于多机通信功能。"
   },
   {
     "id": 171,
@@ -3291,7 +3461,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：标准8051有5个中断源：外中断0、定时器0、外中断1、定时器1和串口中断。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "标准8051有5个中断源：外中断0、定时器0、外中断1、定时器1和串口中断。"
   },
   {
     "id": 172,
@@ -3314,7 +3485,8 @@ window.QUESTION_BANK = [
         "locator": "文档标题",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "MCS-51系列CPU宽度为8位，所以AT89C51是8位单片机。"
   },
   {
     "id": 173,
@@ -3337,7 +3509,8 @@ window.QUESTION_BANK = [
         "locator": "模式2/3描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "模式2的波特率固定为fOSC/32或fOSC/64，模式3的波特率可变；因此说\"方式2和3为多机通信波特率可变方式\"不准确，只有模式3波特率可变。"
   },
   {
     "id": 174,
@@ -3351,7 +3524,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：设置串口的波特率加倍，则SMOD需要设置为1；答案要点：对。"
   },
   {
     "id": 175,
@@ -3365,7 +3539,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：复位后TMOD的状态为0；答案要点：对。"
   },
   {
     "id": 176,
@@ -3388,7 +3563,8 @@ window.QUESTION_BANK = [
         "locator": "特性描述",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "ADC0809的模拟参考电压(VREF)可以独立设置，与单片机的数字供电电压不必相同，因此两者可以不同。"
   },
   {
     "id": 177,
@@ -3402,7 +3578,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：RI是接收中断标志，表示接收完毕，不能表示发送结束；发送结束标志是TI，因此题目错误。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "RI是接收中断标志，表示接收完毕，不能表示发送结束；发送结束标志是TI，因此题目错误。"
   },
   {
     "id": 178,
@@ -3416,7 +3593,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：定时/计数器T0中断向量地址是000BH，对应的中断编号在Keil C中为1(Interrupt 1)，因此中断编号不是3。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "定时/计数器T0中断向量地址是000BH，对应的中断编号在Keil C中为1(Interrupt 1)，因此中断编号不是3。"
   },
   {
     "id": 179,
@@ -3439,7 +3617,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TMOD是定时/计数器模式寄存器，用于设置定时器的工作方式；中断允许寄存器是IE，因此题目错误。"
   },
   {
     "id": 180,
@@ -3462,7 +3641,8 @@ window.QUESTION_BANK = [
         "locator": "串口模式描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串行口共有四种工作方式(模式0到模式3)，题目说四种工作方式正确。"
   },
   {
     "id": 181,
@@ -3485,7 +3665,8 @@ window.QUESTION_BANK = [
         "locator": "端口3替代功能表",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "P3.2作为外部中断0输入端(INT0)，因此题目正确。"
   },
   {
     "id": 182,
@@ -3499,7 +3680,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：SMOD位于PCON的最高位；答案要点：对。"
   },
   {
     "id": 183,
@@ -3513,7 +3695,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：在计算机中，补码常用于表示有符号整数，因为补码编码使加减运算统一。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "在计算机中，补码常用于表示有符号整数，因为补码编码使加减运算统一。"
   },
   {
     "id": 184,
@@ -3536,7 +3719,8 @@ window.QUESTION_BANK = [
         "locator": "Timer/Counters章节",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "定时器在定时模式下向上计数，而非向下计数；手册明确说明计数器在每个机器周期递增。"
   },
   {
     "id": 185,
@@ -3550,7 +3734,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器为8位宽，包含总中断允许位EA和各中断允许位(ES、ET1、EX1、ET0、EX0等)。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器为8位宽，包含总中断允许位EA和各中断允许位(ES、ET1、EX1、ET0、EX0等)。"
   },
   {
     "id": 186,
@@ -3573,7 +3758,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TR0=1启动定时器0，TR0=0停止定时器0。"
   },
   {
     "id": 187,
@@ -3596,7 +3782,8 @@ window.QUESTION_BANK = [
         "locator": "TCON寄存器表",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "IE0是外部中断0的请求标志位，当检测到触发沿时IE0被硬件置1。"
   },
   {
     "id": 188,
@@ -3619,7 +3806,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC138是一片3线至8线译码器，有8个独立输出，选中时输出为低电平。"
   },
   {
     "id": 189,
@@ -3633,7 +3821,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：TMOD的默认值为0；答案要点：对。"
   },
   {
     "id": 190,
@@ -3647,7 +3836,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：串行通信中，RE代表允许读串行数据；答案要点：对。"
   },
   {
     "id": 191,
@@ -3661,7 +3851,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：IE寄存器中的ES位允许或禁止串口中断，与外中断无关，因此说ES允许外中断不正确。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "IE寄存器中的ES位允许或禁止串口中断，与外中断无关，因此说ES允许外中断不正确。"
   },
   {
     "id": 192,
@@ -3684,7 +3875,8 @@ window.QUESTION_BANK = [
         "locator": "TMOD寄存器说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "TMOD寄存器用于控制定时器/计数器的工作方式和门控，选择定时或计数功能，因此说TMOD用于控制定时器工作方式正确。"
   },
   {
     "id": 193,
@@ -3698,7 +3890,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：外部中断0的中断触发标志位是IT0；答案要点：对。"
   },
   {
     "id": 194,
@@ -3712,7 +3905,8 @@ window.QUESTION_BANK = [
     "explanation": "未找到权威资料证明该题答案，需要进一步查证。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "考点：无源蜂鸣器正常工作时，能发出固定频率的音频信号；答案要点：错。"
   },
   {
     "id": 195,
@@ -3726,7 +3920,8 @@ window.QUESTION_BANK = [
     "explanation": "待人工复核：中断向量表中外部中断1的向量地址为0013H，对应的中断号为2，因此题目正确。",
     "explanationStatus": "needs_review",
     "explanationConfidence": "low",
-    "sources": []
+    "sources": [],
+    "knowledgePoint": "中断向量表中外部中断1的向量地址为0013H，对应的中断号为2，因此题目正确。"
   },
   {
     "id": 196,
@@ -3749,7 +3944,8 @@ window.QUESTION_BANK = [
         "locator": "General description",
         "trust": "official"
       }
-    ]
+    ],
+    "knowledgePoint": "74HC138译码器在任意时刻只有一个输出为低电平，其余均保持高电平或高阻，这正是译码器的特点。"
   },
   {
     "id": 197,
@@ -3772,7 +3968,8 @@ window.QUESTION_BANK = [
         "locator": "模式2描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式2专门支持多机通信，提供第九位地址标记，因此题目正确。"
   },
   {
     "id": 198,
@@ -3795,7 +3992,8 @@ window.QUESTION_BANK = [
         "locator": "架构说明",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "MCS-51体系结构提供64KB外部数据存储空间，AT89C51可以通过MOVX指令访问达64KB的数据存储器。"
   },
   {
     "id": 199,
@@ -3818,7 +4016,8 @@ window.QUESTION_BANK = [
         "locator": "串口描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "通信方式可分为串行通信和并行通信两类，这是基本分类。"
   },
   {
     "id": 200,
@@ -3841,6 +4040,7 @@ window.QUESTION_BANK = [
         "locator": "模式1描述",
         "trust": "authoritative-mirror"
       }
-    ]
+    ],
+    "knowledgePoint": "串口模式1是异步通信模式，适用于点对点(双机)通信，因此题目所述方式1为双机通信方式正确。"
   }
 ];
