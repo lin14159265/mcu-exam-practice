@@ -14,6 +14,7 @@
 - `parser.js`：题库解析脚本。
 - `questions.js`：自动生成的数据文件，不建议手动编辑。
 - `README.md`：使用和题库解析说明。
+- `HANDOFF.md`：当前完成度、已验证状态、已知风险和后续优先级；新对话应优先阅读。
 - `start-local.bat`：Windows 本地静态服务启动脚本，用于访问 `http://127.0.0.1:8765/index.html`。
 
 ## 技术栈
@@ -30,6 +31,7 @@
 - 改刷题流程或记录规则：先看 `app.js`。
 - 改界面布局、视图切换或主题：先看 `index.html`、`style.css` 和 `app.js`。
 - 改使用说明：同步更新 `README.md`。
+- 接手工程或规划下一轮优化：先看 `HANDOFF.md`，再用 Git 状态核对是否已过期。
 
 ## 常用命令
 
